@@ -95,16 +95,19 @@ const About = () => {
   );
 };
 
-const SocialButton = ({ href, icon: Icon, label }: { href: string; icon: React.ElementType; label: string }) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border bg-card hover:border-emerald/50 hover:bg-emerald/5 transition-all duration-300 group"
-  >
-    <Icon className="w-4 h-4 text-emerald group-hover:scale-110 transition-transform" />
-    <span className="text-sm font-medium text-foreground/80 group-hover:text-foreground">{label}</span>
-  </a>
-);
+const SocialButton = ({ href, icon: Icon, label }: { href: string; icon: React.ElementType; label: string }) => {
+  const isExternal = href.startsWith("http");
+  return (
+    <a
+      href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border bg-card hover:border-emerald/50 hover:bg-emerald/5 transition-all duration-300 group"
+    >
+      <Icon className="w-4 h-4 text-emerald group-hover:scale-110 transition-transform" />
+      <span className="text-sm font-medium text-foreground/80 group-hover:text-foreground">{label}</span>
+    </a>
+  );
+};
 
 export default About;

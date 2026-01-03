@@ -30,9 +30,9 @@ const Hero = () => {
                   {PERSONAL_INFO.name}
                 </span>
               </h1>
-              <div className="text-xl md:text-2xl lg:text-3xl text-muted-foreground flex items-center gap-2 h-8">
+              <div className="text-xl md:text-2xl lg:text-3xl text-muted-foreground flex items-center gap-2">
                 <span>{PERSONAL_INFO.subtitle}</span>
-                <span className="w-0.5 h-6 bg-emerald animate-blink"></span>
+                <span className="w-0.5 h-[1.2em] bg-emerald animate-blink"></span>
               </div>
             </div>
 
@@ -99,17 +99,20 @@ const Hero = () => {
   );
 };
 
-const SocialLink = ({ href, ariaLabel, children }: { href: string; ariaLabel: string; children: React.ReactNode }) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="w-12 h-12 rounded-full border border-emerald/30 text-emerald/80 hover:text-emerald hover:bg-emerald/10 hover:border-emerald hover:scale-110 flex items-center justify-center transition-all duration-300"
-    aria-label={ariaLabel}
-  >
-    {children}
-  </a>
-);
+const SocialLink = ({ href, ariaLabel, children }: { href: string; ariaLabel: string; children: React.ReactNode }) => {
+  const isExternal = href.startsWith("http");
+  return (
+    <a
+      href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      className="w-12 h-12 rounded-full border border-emerald/30 text-emerald/80 hover:text-emerald hover:bg-emerald/10 hover:border-emerald hover:scale-110 flex items-center justify-center transition-all duration-300"
+      aria-label={ariaLabel}
+    >
+      {children}
+    </a>
+  );
+};
 
 // Helper to generate sequence of numbers ending at target
 // Creates a longer reel for more dramatic slot effect

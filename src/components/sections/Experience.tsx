@@ -16,7 +16,7 @@ const Experience = () => {
     <section className="py-20 px-4 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16 space-y-6">
+        <div className="text-center mb-28 space-y-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald/5 border border-emerald/20 text-emerald text-xs font-medium uppercase tracking-wider">
             <Briefcase className="w-3 h-3" />
             <span>Career Path</span>
@@ -76,7 +76,7 @@ const Experience = () => {
                 {/* Title Header */}
                 <div className="space-y-4 border-b border-border/50 pb-6">
                   <div>
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-2">
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight font-mono mb-2">
                       {selectedExperience.title}
                     </h3>
                     <div className="text-xl text-emerald font-semibold">

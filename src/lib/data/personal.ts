@@ -43,7 +43,6 @@ export const pcSpecs = {
   storage: "2TB NVMe SSD + 4TB HDD",
   motherboard: "ASUS ROG Strix B550-F",
   case: "NZXT H510",
-  cooling: "Noctua NH-D15",
 };
 
 export const setupHighlights = [

@@ -7,7 +7,7 @@ const Education = () => {
     <section className="px-4 pt-12 pb-20">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16 space-y-6">
+        <div className="text-center mb-28 space-y-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald/5 border border-emerald/20 text-emerald text-xs font-medium uppercase tracking-wider">
             <GraduationCap className="w-3 h-3" />
             <span>Academic Background</span>
@@ -41,7 +41,7 @@ const Education = () => {
               {/* University and Degree Info */}
               <div className="space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight">
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight font-mono">
                     {EDUCATION_INFO.university}
                   </h3>
                   <div className="inline-flex items-center justify-center gap-2 bg-secondary/50 px-4 py-1.5 rounded-md border border-border/50 text-sm font-mono text-muted-foreground whitespace-nowrap w-fit">

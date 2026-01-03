@@ -44,7 +44,7 @@ const Contact = () => {
           <ContactCard
             href={PERSONAL_INFO.linkedin}
             title="Connect on LinkedIn"
-            value="Anthony Doan"
+            value="anthonyduydoan"
             external
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -61,7 +61,7 @@ const Contact = () => {
             </div>
               <div>
             <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">Location</div>
-            <div className="font-mono text-lg font-medium text-foreground">
+            <div className="text-lg font-medium text-foreground">
               {PERSONAL_INFO.location}
             </div>
           </div>
@@ -104,7 +104,7 @@ const ContactCard = ({ href, title, value, external, children }: ContactCardProp
     </div>
       <div>
     <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1 group-hover:text-emerald/80 transition-colors">{title}</div>
-    <div className="font-mono text-lg font-medium text-foreground group-hover:text-emerald transition-colors">
+    <div className="text-lg font-medium text-foreground group-hover:text-emerald transition-colors">
       {value}
         </div>
       </div>
