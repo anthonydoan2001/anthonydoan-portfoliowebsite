@@ -236,7 +236,7 @@ const Personal = () => {
               <span>☕ Coffee enthusiast</span>
               <span>🌙 Night owl coder</span>
               <span>🎧 Always has headphones on</span>
-              <span>🍜 Ramen connoisseur</span>
+              <span>🍜 Noodles connoisseur</span>
             </div>
           </div>
         </div>
