@@ -20,7 +20,7 @@ const Contact = () => {
         </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-12">
           <ContactCard
             href={`mailto:${PERSONAL_INFO.email}`}
             title="Email Me"
@@ -52,7 +52,7 @@ const Contact = () => {
             </svg>
           </ContactCard>
 
-          <div className="group border border-border/50 rounded-2xl p-8 hover:border-emerald/30 transition-colors duration-300">
+          <div className="group border border-border/50 rounded-2xl p-4 sm:p-6 md:p-8 hover:border-emerald/30 transition-colors duration-300">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full border border-emerald/30 text-emerald/80 group-hover:text-emerald group-hover:bg-emerald/10 group-hover:border-emerald group-hover:scale-110 flex items-center justify-center flex-shrink-0 transition-all duration-300">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -96,7 +96,7 @@ const ContactCard = ({ href, title, value, external, children }: ContactCardProp
     href={href}
     target={external ? "_blank" : undefined}
     rel={external ? "noopener noreferrer" : undefined}
-    className="group border border-border/50 rounded-2xl p-8 hover:border-emerald/30 hover:bg-emerald/5 transition-all duration-300"
+    className="group border border-border/50 rounded-2xl p-4 sm:p-6 md:p-8 hover:border-emerald/30 hover:bg-emerald/5 transition-all duration-300"
   >
     <div className="flex items-center gap-4">
       <div className="w-12 h-12 rounded-full border border-emerald/30 text-emerald/80 group-hover:text-emerald group-hover:bg-emerald/10 group-hover:border-emerald group-hover:scale-110 flex items-center justify-center flex-shrink-0 transition-all duration-300">
@@ -104,7 +104,7 @@ const ContactCard = ({ href, title, value, external, children }: ContactCardProp
     </div>
       <div>
     <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1 group-hover:text-emerald/80 transition-colors">{title}</div>
-    <div className="text-lg font-medium text-foreground group-hover:text-emerald transition-colors">
+    <div className="text-sm sm:text-base md:text-lg font-medium text-foreground group-hover:text-emerald transition-colors break-all sm:break-normal">
       {value}
         </div>
       </div>

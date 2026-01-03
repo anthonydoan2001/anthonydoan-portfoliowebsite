@@ -25,12 +25,12 @@ const Hero = () => {
               <div className="inline-block px-3 py-1 rounded-full border border-emerald/30 bg-emerald/5 backdrop-blur-sm mb-2">
                 <p className="text-emerald text-xs uppercase tracking-wider font-semibold">{PERSONAL_INFO.title}</p>
               </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-mono leading-tight tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-mono leading-tight tracking-tight">
                 Hello, I'm <span className="text-emerald">
                   {PERSONAL_INFO.name}
                 </span>
               </h1>
-              <div className="text-xl md:text-2xl lg:text-3xl text-muted-foreground flex items-center gap-2">
+              <div className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-muted-foreground flex items-center gap-2">
                 <span>{PERSONAL_INFO.subtitle}</span>
                 <span className="w-0.5 h-[1.2em] bg-emerald animate-blink"></span>
               </div>
@@ -46,7 +46,7 @@ const Hero = () => {
                 Resume
               </a>
 
-              <div className="flex items-center gap-3 pl-4">
+              <div className="flex items-center gap-2 sm:gap-3 pl-2 sm:pl-4">
                 <SocialLink href={`mailto:${PERSONAL_INFO.email}`} ariaLabel="Email">
                   <svg className="w-5 h-5" viewBox="0 -2.5 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path fill="currentColor" d="M294,774.474 L284,765.649 L284,777 L304,777 L304,765.649 L294,774.474 Z M294.001,771.812 L284,762.981 L284,762 L304,762 L304,762.981 L294.001,771.812 Z" transform="translate(-340 -922) translate(56 160)"/>
@@ -70,7 +70,7 @@ const Hero = () => {
 
           <div className={`flex-shrink-0 transition-all duration-1000 delay-300 transform ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
             <div className="relative">
-              <div className="relative w-80 h-80 md:w-96 md:h-96 lg:w-[26rem] lg:h-[26rem]">
+              <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[26rem] xl:h-[26rem]">
                 {/* Glowing backdrop */}
                 <div className="absolute inset-0 rounded-full bg-emerald/20 blur-2xl scale-110"></div>
 
@@ -89,7 +89,7 @@ const Hero = () => {
         </div>
 
         {/* Stats Section - Full Width Below */}
-        <div className={`grid grid-cols-3 gap-8 mt-20 pt-8 transition-all duration-1000 delay-500 transform ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 mt-12 sm:mt-16 md:mt-20 pt-8 transition-all duration-1000 delay-500 transform ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <SlotCounter target={PERSONAL_INFO.age} label="Age" delay={0} />
           <SlotCounter target={PERSONAL_INFO.yearsExperience} label="Years Experience" delay={200} />
           <SlotCounter target={PERSONAL_INFO.projectsCount} label="Projects" delay={400} />
@@ -106,7 +106,7 @@ const SocialLink = ({ href, ariaLabel, children }: { href: string; ariaLabel: st
       href={href}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      className="w-12 h-12 rounded-full border border-emerald/30 text-emerald/80 hover:text-emerald hover:bg-emerald/10 hover:border-emerald hover:scale-110 flex items-center justify-center transition-all duration-300"
+      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-emerald/30 text-emerald/80 hover:text-emerald hover:bg-emerald/10 hover:border-emerald hover:scale-110 flex items-center justify-center transition-all duration-300"
       aria-label={ariaLabel}
     >
       {children}
@@ -130,8 +130,8 @@ const SlotCounter = ({ target, label, delay = 0 }: { target: number | string; la
   const numbers = getSlotNumbers(numTarget);
 
   return (
-    <div className="flex flex-col items-center justify-center gap-2 text-center">
-      <div className="h-[3rem] md:h-[3.75rem] overflow-hidden relative">
+    <div className="flex flex-col items-center justify-center gap-1 sm:gap-2 text-center">
+      <div className="h-[2.5rem] sm:h-[3rem] md:h-[3.75rem] overflow-hidden relative">
         {/* Gradient masks for fade effect */}
         <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-b from-background via-transparent to-background"></div>
         <div
@@ -141,14 +141,14 @@ const SlotCounter = ({ target, label, delay = 0 }: { target: number | string; la
           {numbers.map((num, i) => (
             <div
               key={i}
-              className="h-[3rem] md:h-[3.75rem] flex items-center justify-center text-4xl md:text-5xl font-bold text-foreground font-mono"
+              className="h-[2.5rem] sm:h-[3rem] md:h-[3.75rem] flex items-center justify-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground font-mono"
             >
               {num}
             </div>
           ))}
         </div>
       </div>
-      <div className="text-sm text-muted-foreground font-medium tracking-wider uppercase">{label}</div>
+      <div className="text-xs sm:text-sm text-muted-foreground font-medium tracking-wider uppercase">{label}</div>
     </div>
   );
 };

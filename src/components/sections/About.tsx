@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const About = () => {
   return (
-    <section className="py-24 px-4 relative overflow-hidden" id="about">
+    <section className="py-16 sm:py-20 md:py-24 px-4 relative overflow-hidden" id="about">
       <div className="max-w-6xl mx-auto">
         {/* Centered Header */}
         <div className="text-center mb-16 space-y-6">
@@ -23,7 +23,7 @@ const About = () => {
           {/* Left Column - Text Content */}
           <div className="space-y-8">
             <div className="space-y-6">
-              <div className="text-muted-foreground text-lg leading-relaxed space-y-6">
+              <div className="text-muted-foreground text-base sm:text-lg leading-relaxed space-y-4 sm:space-y-6">
                 <p>
                   I am a Computer Technician at Secure ITAD Services, Inc. with a B.S. in Computer Science
                   from the University of Houston (2024). I'm actively pursuing CompTIA Network+ certification

@@ -27,9 +27,9 @@ const Experience = () => {
         </div>
 
         {/* Two Column Layout */}
-        <div className="grid md:grid-cols-[350px_1fr] gap-8 md:gap-12 items-start">
+        <div className="grid lg:grid-cols-[320px_1fr] gap-6 md:gap-8 lg:gap-12 items-start">
           {/* Left Column - Experience List */}
-          <div className="space-y-2">
+          <div className="space-y-2 overflow-x-auto lg:overflow-visible">
             {experiences.map((exp, index) => {
               const Icon = iconMap[exp.icon] || Wrench;
               const isSelected = index === selectedIndex;
@@ -70,13 +70,13 @@ const Experience = () => {
           </div>
 
           {/* Right Column - Selected Experience Details */}
-          <div className="min-h-[500px]">
+          <div className="min-h-[300px] lg:min-h-[500px]">
             {selectedExperience && (
               <div key={selectedIndex} className="space-y-8">
                 {/* Title Header */}
                 <div className="space-y-4 border-b border-border/50 pb-6">
                   <div>
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight font-mono mb-2">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight font-mono mb-2">
                       {selectedExperience.title}
                     </h3>
                     <div className="text-xl text-emerald font-semibold">

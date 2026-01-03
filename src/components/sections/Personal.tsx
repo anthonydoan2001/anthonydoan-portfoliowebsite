@@ -21,10 +21,10 @@ const Personal = () => {
             <Heart className="w-3 h-3" />
             <span>Personal Life</span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground font-mono">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground font-mono">
             Beyond the <span className="text-emerald">Code</span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-2">
             When I'm not diagnosing hardware or writing code, you'll find me gaming,
             reading books or manga, or tinkering with my homelab.
           </p>
@@ -41,7 +41,7 @@ const Personal = () => {
               I love having full control over my digital infrastructure.
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
               {homelabSetup.map((service) => (
                 <div
                   key={service.name}
@@ -106,7 +106,7 @@ const Personal = () => {
         <div className="mb-20">
           <SectionHeader icon={BookOpen} title="Reading & Anime" subtitle="Stories that inspire me" />
 
-          <div className="grid md:grid-cols-3 gap-8 mt-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mt-8">
             {/* Currently Reading */}
             <div className="md:col-span-2 space-y-6">
               <h4 className="text-lg font-semibold text-foreground">Currently Reading</h4>
@@ -166,7 +166,7 @@ const Personal = () => {
         <div className="mb-12">
           <SectionHeader icon={Monitor} title="PC Setup" subtitle="Where the magic happens" />
 
-          <div className="grid md:grid-cols-2 gap-8 mt-8">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mt-8">
             {/* Specs */}
             <div className="space-y-6">
               <h4 className="text-lg font-semibold text-foreground">Main Rig Specs</h4>
@@ -174,10 +174,10 @@ const Personal = () => {
                 {Object.entries(pcSpecs).map(([key, value]) => (
                   <div
                     key={key}
-                    className="flex justify-between items-center p-3 rounded-lg border border-border/50 bg-card/30"
+                    className="flex justify-between items-center p-3 rounded-lg border border-border/50 bg-card/30 gap-2"
                   >
                     <span className="text-muted-foreground capitalize text-sm">{key}</span>
-                    <span className="font-mono text-sm text-foreground">{value}</span>
+                    <span className="font-mono text-xs sm:text-sm text-foreground text-right">{value}</span>
                   </div>
                 ))}
               </div>
@@ -232,7 +232,7 @@ const Personal = () => {
         <div className="mt-20 pt-12 border-t border-border/50">
           <div className="text-center space-y-4">
             <h3 className="text-lg font-semibold text-muted-foreground">Fun Facts</h3>
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-muted-foreground">
               <span>☕ Coffee enthusiast</span>
               <span>🌙 Night owl coder</span>
               <span>🎧 Always has headphones on</span>

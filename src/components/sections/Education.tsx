@@ -41,7 +41,7 @@ const Education = () => {
               {/* University and Degree Info */}
               <div className="space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight font-mono">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight font-mono">
                     {EDUCATION_INFO.university}
                   </h3>
                   <div className="inline-flex items-center justify-center gap-2 bg-secondary/50 px-4 py-1.5 rounded-md border border-border/50 text-sm font-mono text-muted-foreground whitespace-nowrap w-fit">
@@ -51,7 +51,7 @@ const Education = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <div className="text-xl md:text-2xl font-bold text-emerald">
+                  <div className="text-lg sm:text-xl md:text-2xl font-bold text-emerald">
                     {EDUCATION_INFO.degree}
                   </div>
                   <p className="text-base md:text-lg text-muted-foreground font-medium">
