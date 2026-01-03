@@ -5,7 +5,7 @@ export const currentlyPlaying = [
 
 export const favoriteGames = [
   "Baldur's Gate 3",
-    "Dark Souls Series",
+  "Dark Souls Series",
   "Elden Ring",
   "Cyberpunk 2077",
   "Civilization VI",
@@ -14,11 +14,12 @@ export const favoriteGames = [
 export const currentlyReading = [
   { title: "One Piece", type: "Manga" },
   { title: "Tokyo Ghoul", type: "Manga" },
-  { title: "Fire Punch", type: "Manga" },
-  { title: "The Promised Neverland", type: "Manga" },
+  { title: "The Philosophy Book", type: "Philosophy" },
+  { title: "A Short History of China", type: "History" },
 ];
 
 export const favoriteGenres = [
+  "History",
   "Fantasy",
   "Action",
   "Progression",
