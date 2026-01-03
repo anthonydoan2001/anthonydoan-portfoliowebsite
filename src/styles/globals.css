@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 12%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 6%;
+
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 6%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 160 84% 39%;
+
+    --radius: 0.75rem;
+
+    --emerald: 160 100% 50%;
+    --emerald-dark: 160 100% 40%;
+    --emerald-light: 160 100% 60%;
+
+    /* Global Animation Timing */
+    --ease-smooth: cubic-bezier(0.215, 0.61, 0.355, 1);
+    --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(to right, hsl(0 0% 18%) 0 3px, transparent 3px),
+      linear-gradient(to bottom, hsl(0 0% 18%) 0 3px, transparent 3px);
+    background-size: 120px 120px;
+  }
+
+  .bg-gradient-radial {
+    background: radial-gradient(circle at center, var(--tw-gradient-stops));
+  }
+
+  /* Creative rotating ring + orbiting dot around profile image */
+  @keyframes spin-slow {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .ring-rotate {
+    animation: spin-slow 30s linear infinite;
+  }
+
+  .conic-ring {
+    background:
+      conic-gradient(
+        from 0deg,
+        hsl(var(--emerald)) 0 15%,
+        transparent 15% 30%,
+        hsl(var(--emerald-light)) 30% 45%,
+        transparent 45% 65%,
+        hsl(var(--emerald)) 65% 80%,
+        transparent 80% 100%
+      );
+    border-radius: 9999px;
+    /* Create a donut shape via masking (outer ring visible, center cut out) */
+    -webkit-mask:
+      radial-gradient(farthest-side, #000 99%, transparent 100%) content-box,
+      linear-gradient(#000, #000);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    padding: 1px; /* ring thickness */
+  }
+
+  .orbit {
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    animation: spin-slow 10s linear infinite;
+  }
+
+  /* Slot machine animation for numbers */
+  @keyframes slot-spin {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-91.666%);
+    }
+  }
+
+  .animate-slot-spin {
+    animation: slot-spin 1.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  }
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s var(--ease-smooth) forwards;
+  }
+
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  /* 3D Transforms */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .rotate-y-2 {
+    transform: rotateY(2deg);
+  }
+
+  /* Slide In Animation */
+  @keyframes slide-in-right {
+    0% {
+      opacity: 0;
+      transform: translateX(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.4s var(--ease-smooth) forwards;
+  }
+}
