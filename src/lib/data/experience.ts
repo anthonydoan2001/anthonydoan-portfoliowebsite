@@ -11,10 +11,10 @@ export const experiences: Experience[] = [
     location: "Houston, TX",
     type: "Full-time",
     responsibilities: [
+      "Engineered Chrome extension automation tool using JavaScript to auto-fill 50+ fields in Razor ERP system, reducingdata entry time by 70% and increasing daily computer processing volume with improved accuracy.",
       "Process 60+ computers daily through complete diagnostics, repair, and quality assurance workflows using ZipErase and Razor ERP tracking systems",
       "Execute secure data sanitization and hardware refurbishment following NIST 800-88 and company security protocols",
-      "Manage comprehensive IT asset inventory including specification documentation, equipment lifecycle tracking, and disposition reporting",
-      "Troubleshoot and resolve hardware/software issues across Windows, macOS, and Linux systems to certify equipment for redeployment"
+      "Manage comprehensive IT asset inventory including specification documentation, equipment lifecycle tracking, and disposition reporting"
     ]
   },
   {
@@ -27,8 +27,9 @@ export const experiences: Experience[] = [
     location: "Waller, TX",
     type: "Internship",
     responsibilities: [
-      "Built JavaScript and SQL-based rebate processing automation that eliminated 40 hours of weekly manual workload and improved accuracy by 60%",
-      "Created comprehensive IT process documentation and troubleshooting guides that standardized support procedures across the department"
+      "Contributed to dealer rebate automation system that reduced processing time from 5 days to 24 hours (80% improvement) by building JavaScript data extraction scripts and SQL queries for rebate processing.",
+      "Designed database schemas by analyzing Excel data structures, then performed ETL processes including data cleaning, transformation, and migration from Excel spreadsheets into SQL databases for operational reporting.",
+      "Created SQL queries for data validation and extraction supporting finance team reporting."
     ]
   },
   {

@@ -4,13 +4,13 @@ export const PERSONAL_INFO = {
   subtitle: "Computer Technician & Full-Stack Developer",
   age: 24,
   yearsExperience: 3,
-  projectsCount: 3,
+  projectsCount: 6,
   location: "Houston, TX",
   email: "anthonydoanwork@gmail.com",
   phone: "(832) 279-0182",
   github: "https://github.com/anthonydoan2001",
   linkedin: "https://linkedin.com/in/anthonyduydoan",
-  cvPath: "/Anthony_Doan_IT.pdf"
+  cvPath: "/Anthony_Doan_Resume.pdf"
 } as const;
 
 export const NAVIGATION_BRAND = "anthonydoan.dev" as const;

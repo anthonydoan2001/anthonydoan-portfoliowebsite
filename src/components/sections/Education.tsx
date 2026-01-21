@@ -4,60 +4,68 @@ import { BookOpen, Calendar, GraduationCap } from "lucide-react";
 
 const Education = () => {
   return (
-    <section className="px-4 pt-12 pb-20">
+    <section className="py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-28 space-y-6">
+        <div className="text-center mb-12 md:mb-16 space-y-4 md:space-y-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald/5 border border-emerald/20 text-emerald text-xs font-medium uppercase tracking-wider">
             <GraduationCap className="w-3 h-3" />
             <span>Academic Background</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground font-mono">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground font-mono">
             My <span className="text-emerald">Education</span>
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-20 items-start">
-          {/* Left Column - Logo */}
-          <div className="relative w-full max-w-xs mx-auto md:mx-0">
-            {/* Logo Container */}
-            <div className="relative rounded-3xl overflow-hidden">
-              <div className="aspect-square relative p-6 md:p-8 flex items-center justify-center">
-                <img
-                  src="/images/logos/UH.svg"
-                  alt="University of Houston"
-                  className="w-full h-full object-contain"
-                />
-              </div>
+        <div className="grid md:grid-cols-[240px_1fr] lg:grid-cols-[280px_1fr] gap-8 md:gap-10 lg:gap-12 items-start">
+          {/* Left Column - Logo (Desktop Only) */}
+          <div className="hidden md:block relative w-full">
+            <div className="relative aspect-square p-6 md:p-8 lg:p-10 flex items-center justify-center">
+              <img
+                src="/images/logos/UH.svg"
+                alt="University of Houston"
+                className="w-full h-full object-contain"
+              />
             </div>
-
-            {/* Decorative Elements */}
-            <div className="absolute -z-10 top-10 -right-10 w-full h-full rounded-3xl border border-emerald/20 bg-emerald/5 translate-x-4 translate-y-4"></div>
           </div>
 
           {/* Right Column - Content */}
           <div className="space-y-8">
+            {/* University and Degree Info */}
             <div className="space-y-6">
-              {/* University and Degree Info */}
-              <div className="space-y-4">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight font-mono">
+              {/* Header with Logo */}
+              <div className="flex items-start gap-4 sm:gap-6">
+                {/* Logo - Inline on Mobile */}
+                <div className="relative flex-shrink-0 md:hidden">
+                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 p-2 sm:p-2.5">
+                    <img
+                      src="/images/logos/UH.svg"
+                      alt="University of Houston"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </div>
+
+                {/* Title and Date */}
+                <div className="flex-1 min-w-0 space-y-3">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground tracking-tight font-mono">
                     {EDUCATION_INFO.university}
                   </h3>
-                  <div className="inline-flex items-center justify-center gap-2 bg-secondary/50 px-4 py-1.5 rounded-md border border-border/50 text-sm font-mono text-muted-foreground whitespace-nowrap w-fit">
+                  <div className="inline-flex items-center gap-2 bg-secondary/50 px-3 py-1.5 rounded-md border border-border/50 text-xs sm:text-sm font-mono text-muted-foreground whitespace-nowrap w-fit">
                     <Calendar className="w-3.5 h-3.5 text-emerald/70" />
                     <span>{EDUCATION_INFO.period}</span>
                   </div>
                 </div>
+              </div>
 
-                <div className="space-y-2">
-                  <div className="text-lg sm:text-xl md:text-2xl font-bold text-emerald">
-                    {EDUCATION_INFO.degree}
-                  </div>
-                  <p className="text-base md:text-lg text-muted-foreground font-medium">
-                    {EDUCATION_INFO.minor}
-                  </p>
+              {/* Degree Info */}
+              <div className="space-y-2">
+                <div className="text-base sm:text-lg md:text-xl font-bold text-emerald">
+                  {EDUCATION_INFO.degree}
                 </div>
+                <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-medium">
+                  {EDUCATION_INFO.minor}
+                </p>
               </div>
             </div>
 

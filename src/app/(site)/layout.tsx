@@ -6,10 +6,12 @@ export default function SiteLayout() {
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       <Outlet />
-      <footer className="border-t border-border py-8 text-center text-muted-foreground">
-        <p className="font-mono text-sm">
-          Built with React & TypeScript • © 2026 Anthony Doan
-        </p>
+      <footer className="py-8 md:py-12 text-center text-muted-foreground px-4">
+        <div className="max-w-6xl mx-auto">
+          <p className="font-mono text-sm md:text-base">
+            Built with React & TypeScript • © 2026 Anthony Doan
+          </p>
+        </div>
       </footer>
     </div>
   );

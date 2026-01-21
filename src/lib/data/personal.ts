@@ -1,25 +1,24 @@
 export const currentlyPlaying = [
   { name: "League of Legends", type: "MOBA" },
-  { name: "Path of Exile", type: "ARPG" },
+  { name: "Avatar: Frontier of Pandora", type: "Adventure" },
 ];
 
 export const favoriteGames = [
   "Baldur's Gate 3",
-  "Dark Souls Series",
-  "Elden Ring",
   "Cyberpunk 2077",
   "Civilization VI",
 ];
 
 export const currentlyReading = [
   { title: "One Piece", type: "Manga" },
-  { title: "Tokyo Ghoul", type: "Manga" },
+  { title: "Vagabond", type: "Manga" },
   { title: "The Philosophy Book", type: "Philosophy" },
   { title: "A Short History of China", type: "History" },
 ];
 
 export const favoriteGenres = [
   "History",
+  "Science",
   "Fantasy",
   "Action",
   "Progression",
@@ -27,32 +26,31 @@ export const favoriteGenres = [
 ];
 
 export const homelabSetup = [
-  { name: "Proxmox VE", description: "Hypervisor" },
-  { name: "TrueNAS", description: "NAS Storage" },
+  { name: "Nextcloud", description: "File Sync/Share" },
   { name: "Docker", description: "Containers" },
   { name: "Jellyfin", description: "Media Server" },
   { name: "Pi-hole", description: "DNS/Ad-block" },
-  { name: "Home Assistant", description: "Automation" },
   { name: "Nginx Proxy", description: "Reverse Proxy" },
-  { name: "Portainer", description: "Container Mgmt" },
+  { name: "Komga", description: "Manga/Comic Server" },
+  { name: "Calibre-Web", description: "eBook Library" },
+  { name: "Minecraft Server", description: "Game Server" },
 ];
 
 export const pcSpecs = {
-  cpu: "AMD Ryzen 7 5800X",
-  gpu: "NVIDIA RTX 3080",
-  ram: "32GB DDR4 3600MHz",
-  storage: "2TB NVMe SSD + 4TB HDD",
-  motherboard: "ASUS ROG Strix B550-F",
-  case: "NZXT H510",
+  cpu: "AMD Ryzen 7 8745HS",
+  gpu: "NVIDIA RTX 4070",
+  ram: "32GB DDR5 4800MHz",
+  storage: "1TB PCle SSD",
+  eGPU: "MINISFORUM DEG2 OCulink Dock",
 };
 
-export const setupHighlights = [
-  "Dual Monitor Setup",
-  "Mechanical Keyboard",
-  "Custom Cables",
-  "RGB Lighting",
-  "Standing Desk",
-];
+export const proxmoxServerSpecs = {
+  model: "Dell OptiPlex 5000 Micro PC",
+  cpu: "Intel Core i5-12500T (6 Core)",
+  ram: "48GB DDR4",
+  storage: "256GB M.2 PCIe SSD",
+  os: "Proxmox VE",
+};
 
 export const musicGenres = [
   "R&B",

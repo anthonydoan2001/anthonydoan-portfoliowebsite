@@ -3,15 +3,15 @@ import { MessageSquare } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section className="py-24 px-4 relative overflow-hidden" id="contact">
+    <section className="py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="contact">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16 space-y-6">
+        <div className="text-center mb-12 md:mb-16 space-y-4 md:space-y-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald/5 border border-emerald/20 text-emerald text-xs font-medium uppercase tracking-wider">
           <MessageSquare className="w-3 h-3" />
           <span>Get in Touch</span>
         </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground font-mono">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground font-mono">
             Let's <span className="text-emerald">Talk</span>
         </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -52,7 +52,7 @@ const Contact = () => {
             </svg>
           </ContactCard>
 
-          <div className="group border border-border/50 rounded-2xl p-4 sm:p-6 md:p-8 hover:border-emerald/30 transition-colors duration-300">
+          <div className="group border border-border/50 rounded-2xl p-5 sm:p-6 hover:border-emerald/30 transition-colors duration-300">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full border border-emerald/30 text-emerald/80 group-hover:text-emerald group-hover:bg-emerald/10 group-hover:border-emerald group-hover:scale-110 flex items-center justify-center flex-shrink-0 transition-all duration-300">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -69,7 +69,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-3">
+        <div className="flex items-center justify-center gap-3 mt-8">
 
           <SocialLink href={PERSONAL_INFO.github} ariaLabel="GitHub">
             <svg className="w-5 h-5" viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -96,7 +96,7 @@ const ContactCard = ({ href, title, value, external, children }: ContactCardProp
     href={href}
     target={external ? "_blank" : undefined}
     rel={external ? "noopener noreferrer" : undefined}
-    className="group border border-border/50 rounded-2xl p-4 sm:p-6 md:p-8 hover:border-emerald/30 hover:bg-emerald/5 transition-all duration-300"
+    className="group border border-border/50 rounded-2xl p-5 sm:p-6 hover:border-emerald/30 hover:bg-emerald/5 transition-all duration-300"
   >
     <div className="flex items-center gap-4">
       <div className="w-12 h-12 rounded-full border border-emerald/30 text-emerald/80 group-hover:text-emerald group-hover:bg-emerald/10 group-hover:border-emerald group-hover:scale-110 flex items-center justify-center flex-shrink-0 transition-all duration-300">

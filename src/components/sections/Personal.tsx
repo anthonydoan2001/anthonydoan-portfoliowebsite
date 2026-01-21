@@ -7,71 +7,91 @@ import {
   homelabSetup,
   musicGenres,
   pcSpecs,
-  setupHighlights
+  proxmoxServerSpecs
 } from "@/lib/data";
 import { BookOpen, Gamepad2, Heart, Monitor, Music, Server, Tv } from "lucide-react";
 
 const Personal = () => {
   return (
-    <section className="py-24 px-4 relative overflow-hidden" id="personal">
+    <section className="pt-4 md:pt-6 lg:pt-8 pb-16 md:pb-20 lg:pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="personal">
       <div className="max-w-6xl mx-auto">
         {/* Hero Header */}
-        <div className="text-center mb-20 space-y-6">
+        <div className="text-center mb-10 md:mb-12 lg:mb-14 space-y-3 md:space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald/5 border border-emerald/20 text-emerald text-xs font-medium uppercase tracking-wider">
             <Heart className="w-3 h-3" />
             <span>Personal Life</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground font-mono">
-            Beyond the <span className="text-emerald">Code</span>
+            Life Beyond the <span className="text-emerald">Grind</span>
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-2">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-normal px-2">
             When I'm not diagnosing hardware or writing code, you'll find me gaming,
             reading books or manga, or tinkering with my homelab.
           </p>
         </div>
 
         {/* Homelab Section */}
-        <div className="mb-20">
-          <SectionHeader icon={Server} title="Homelab" subtitle="My self-hosted playground" />
+        <div className="mb-16 md:mb-20">
+          <SectionHeader icon={Server} title="Homelab" subtitle="" />
 
           <div className="mt-8">
-            <p className="text-muted-foreground leading-relaxed mb-8 max-w-3xl">
-              Running a homelab has been an incredible learning experience. It's where I experiment with
-              virtualization, networking, and self-hosted services. From media streaming to home automation,
-              I love having full control over my digital infrastructure.
+            <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-2xl">
+              My homelab serves as a hands-on learning environment where I explore virtualization, containerization, 
+              and self-hosted solutions. It's where I build practical skills in infrastructure management and automation.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-              {homelabSetup.map((service) => (
-                <div
-                  key={service.name}
-                  className="p-4 rounded-xl border border-border/50 bg-card/30 hover:border-emerald/30 transition-colors text-center"
-                >
-                  <div className="font-bold text-foreground mb-1">{service.name}</div>
-                  <div className="text-xs text-muted-foreground">{service.description}</div>
+            <div className="space-y-8">
+              <div>
+                <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">Services</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                  {homelabSetup.map((service) => (
+                    <div
+                      key={service.name}
+                      className="p-4 rounded-xl border border-border/50 bg-card/30 text-center"
+                    >
+                      <div className="text-sm font-semibold text-foreground mb-1.5">{service.name}</div>
+                      <div className="text-xs text-muted-foreground">{service.description}</div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              {/* Proxmox Server Specs */}
+              <div>
+                <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">Server Hardware</h4>
+                <div className="space-y-2 max-w-2xl">
+                  {Object.entries(proxmoxServerSpecs).map(([key, value]) => (
+                    <div
+                      key={key}
+                      className="flex justify-between items-center p-3 rounded-lg border border-border/50 bg-card/30 gap-2"
+                    >
+                      <span className="text-sm text-muted-foreground capitalize">{key}</span>
+                      <span className="text-sm font-mono font-medium text-foreground text-right">{value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Gaming Section - Full Width Feature */}
-        <div className="mb-20">
-          <SectionHeader icon={Gamepad2} title="Gaming" subtitle="My digital battlegrounds" />
+        <div className="mb-16 md:mb-20">
+          <SectionHeader icon={Gamepad2} title="Gaming" subtitle="" />
 
-          <div className="grid md:grid-cols-2 gap-8 mt-8">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-10 mt-8">
             {/* Currently Playing */}
             <div className="space-y-6">
-              <h4 className="text-lg font-semibold text-foreground">Currently Playing</h4>
-              <div className="space-y-4">
+              <h4 className="text-base font-semibold text-foreground mb-4">Currently Playing</h4>
+              <div className="space-y-3">
                 {currentlyPlaying.map((game) => (
                   <div
                     key={game.name}
-                    className="p-4 rounded-xl border border-border/50 bg-card/30 hover:border-emerald/30 transition-colors"
+                    className="p-4 rounded-xl border border-border/50 bg-card/30"
                   >
                     <div className="flex justify-between items-center">
-                      <span className="font-bold text-foreground">{game.name}</span>
-                      <span className="text-xs px-2 py-1 rounded-full bg-emerald/10 text-emerald border border-emerald/20">
+                      <span className="text-sm font-semibold text-foreground">{game.name}</span>
+                      <span className="text-xs px-2.5 py-1 rounded-full bg-emerald/10 text-emerald border border-emerald/20 font-medium">
                         {game.type}
                       </span>
                     </div>
@@ -82,43 +102,38 @@ const Personal = () => {
 
             {/* Favorite Games */}
             <div className="space-y-6">
-              <h4 className="text-lg font-semibold text-foreground">All-Time Favorites</h4>
-              <div className="flex flex-wrap gap-3">
+              <h4 className="text-base font-semibold text-foreground mb-4">All-Time Favorites</h4>
+              <div className="flex flex-wrap gap-2.5">
                 {favoriteGames.map((game) => (
                   <span
                     key={game}
-                    className="px-4 py-2 rounded-full border border-border bg-secondary/30 text-foreground/80 text-sm cursor-default"
+                    className="px-3.5 py-1.5 rounded-full border border-border bg-secondary/30 text-foreground/90 text-sm font-medium cursor-default"
                   >
                     {game}
                   </span>
                 ))}
               </div>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                I gravitate towards games with deep mechanics, challenging gameplay, and rich lore.
-                Whether it's mastering builds in PoE or climbing ranked in League, I love the
-                competitive and strategic aspects of gaming.
-              </p>
             </div>
           </div>
         </div>
 
         {/* Reading & Anime Section */}
-        <div className="mb-20">
-          <SectionHeader icon={BookOpen} title="Reading & Anime" subtitle="Stories that inspire me" />
+        <div className="mb-16 md:mb-20">
+          <SectionHeader icon={BookOpen} title="Reading & Anime" subtitle="" />
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mt-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mt-8">
             {/* Currently Reading */}
             <div className="md:col-span-2 space-y-6">
-              <h4 className="text-lg font-semibold text-foreground">Currently Reading</h4>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <h4 className="text-base font-semibold text-foreground mb-4">Currently Reading</h4>
+              <div className="grid sm:grid-cols-2 gap-3">
                 {currentlyReading.map((item) => (
                   <div
                     key={item.title}
-                    className="p-4 rounded-xl border border-border/50 bg-card/30 hover:border-emerald/30 transition-colors"
+                    className="p-4 rounded-xl border border-border/50 bg-card/30"
                   >
                     <div className="flex justify-between items-center">
-                      <span className="font-bold text-foreground">{item.title}</span>
-                      <span className="text-xs px-2 py-1 rounded-full bg-emerald/10 text-emerald border border-emerald/20">
+                      <span className="text-sm font-semibold text-foreground">{item.title}</span>
+                      <span className="text-xs px-2.5 py-1 rounded-full bg-emerald/10 text-emerald border border-emerald/20 font-medium">
                         {item.type}
                       </span>
                     </div>
@@ -129,12 +144,12 @@ const Personal = () => {
 
             {/* Favorite Genres */}
             <div className="space-y-6">
-              <h4 className="text-lg font-semibold text-foreground">Favorite Genres</h4>
-              <div className="flex flex-wrap gap-2">
+              <h4 className="text-base font-semibold text-foreground mb-4">Favorite Genres</h4>
+              <div className="flex flex-wrap gap-2.5">
                 {favoriteGenres.map((genre) => (
                   <span
                     key={genre}
-                    className="px-3 py-1.5 rounded-full border border-border bg-secondary/30 text-foreground/80 text-xs cursor-default"
+                    className="px-3.5 py-1.5 rounded-full border border-border bg-secondary/30 text-foreground/90 text-sm font-medium cursor-default"
                   >
                     {genre}
                   </span>
@@ -145,15 +160,12 @@ const Personal = () => {
 
           {/* Anime Row */}
           <div className="mt-8 space-y-4">
-            <div className="flex items-center gap-2">
-              <Tv className="w-4 h-4 text-emerald" />
-              <h4 className="text-lg font-semibold text-foreground">Favorite Anime</h4>
-            </div>
-            <div className="flex flex-wrap gap-3">
+            <h4 className="text-base font-semibold text-foreground mb-4">Favorite Anime</h4>
+            <div className="flex flex-wrap gap-2.5">
               {favoriteAnime.map((anime) => (
                 <span
                   key={anime}
-                  className="px-4 py-2 rounded-full border border-border bg-secondary/30 text-foreground/80 text-sm cursor-default"
+                  className="px-3.5 py-1.5 rounded-full border border-border bg-secondary/30 text-foreground/90 text-sm font-medium cursor-default"
                 >
                   {anime}
                 </span>
@@ -163,64 +175,32 @@ const Personal = () => {
         </div>
 
         {/* PC Setup Section */}
-        <div className="mb-12">
-          <SectionHeader icon={Monitor} title="PC Setup" subtitle="Where the magic happens" />
+        <div className="mb-12 md:mb-16">
+          <SectionHeader icon={Monitor} title="PC Setup" subtitle="" />
 
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mt-8">
-            {/* Specs */}
-            <div className="space-y-6">
-              <h4 className="text-lg font-semibold text-foreground">Main Rig Specs</h4>
-              <div className="space-y-3">
-                {Object.entries(pcSpecs).map(([key, value]) => (
-                  <div
-                    key={key}
-                    className="flex justify-between items-center p-3 rounded-lg border border-border/50 bg-card/30 gap-2"
-                  >
-                    <span className="text-muted-foreground capitalize text-sm">{key}</span>
-                    <span className="font-mono text-xs sm:text-sm text-foreground text-right">{value}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Setup Highlights */}
-            <div className="space-y-6">
-              <h4 className="text-lg font-semibold text-foreground">Setup Highlights</h4>
-              <div className="flex flex-wrap gap-3">
-                {setupHighlights.map((item) => (
-                  <span
-                    key={item}
-                    className="px-4 py-2 rounded-full border border-border bg-secondary/30 text-foreground/80 text-sm cursor-default"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Building PCs has been a passion since I was a teenager. I love the process of
-                researching components, optimizing airflow, and achieving that perfect cable management.
-                There's something satisfying about a clean build that performs well.
-              </p>
+          <div className="mt-8">
+            <div className="space-y-3 max-w-md">
+              {Object.entries(pcSpecs).map(([key, value]) => (
+                <div
+                  key={key}
+                  className="flex justify-between items-center p-4 rounded-xl border border-border/50 bg-card/30 gap-2"
+                >
+                  <span className="text-sm text-muted-foreground capitalize">{key}</span>
+                  <span className="text-sm font-mono font-medium text-foreground text-right">{value}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
         {/* Music Section */}
-        <div className="mb-12">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-full border border-emerald/30 bg-emerald/5 flex items-center justify-center">
-              <Music className="w-5 h-5 text-emerald" />
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-foreground">What I Listen To</h3>
-              <p className="text-sm text-muted-foreground">Music that keeps me focused</p>
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-3">
+        <div className="mb-12 md:mb-16">
+          <SectionHeader icon={Music} title="Music" subtitle="" />
+          <div className="flex flex-wrap gap-2.5 mt-8">
             {musicGenres.map((genre) => (
               <span
                 key={genre}
-                className="px-4 py-2 rounded-full border border-border bg-secondary/30 text-foreground/80 text-sm cursor-default"
+                className="px-3.5 py-1.5 rounded-full border border-border bg-secondary/30 text-foreground/90 text-sm font-medium cursor-default"
               >
                 {genre}
               </span>
@@ -231,8 +211,8 @@ const Personal = () => {
         {/* Fun Facts Footer */}
         <div className="mt-20 pt-12 border-t border-border/50">
           <div className="text-center space-y-4">
-            <h3 className="text-lg font-semibold text-muted-foreground">Fun Facts</h3>
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-muted-foreground">
+            <h3 className="text-base font-semibold text-muted-foreground uppercase tracking-wider">Fun Facts</h3>
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm text-muted-foreground">
               <span>☕ Coffee enthusiast</span>
               <span>🌙 Night owl coder</span>
               <span>🎧 Always has headphones on</span>
@@ -251,8 +231,8 @@ const SectionHeader = ({ icon: Icon, title, subtitle }: { icon: React.ElementTyp
       <Icon className="w-6 h-6 text-emerald" />
     </div>
     <div>
-      <h3 className="text-xl font-bold text-foreground">{title}</h3>
-      <p className="text-muted-foreground">{subtitle}</p>
+      <h3 className="text-xl font-bold text-foreground font-mono">{title}</h3>
+      {subtitle && <p className="text-sm text-muted-foreground mt-0.5">{subtitle}</p>}
     </div>
   </div>
 );

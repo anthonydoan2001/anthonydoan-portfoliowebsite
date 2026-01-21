@@ -10,16 +10,16 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 pb-16 md:pt-28 md:pb-20 lg:pt-32 lg:pb-24 overflow-hidden">
       {/* Grid background with fade on edges */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-30" style={{
-        maskImage: 'radial-gradient(ellipse 100% 60% at 50% 50%, black 40%, transparent 100%)',
-        WebkitMaskImage: 'radial-gradient(ellipse 100% 60% at 50% 50%, black 40%, transparent 100%)'
+      <div className="absolute inset-0 bg-grid-pattern opacity-25" style={{
+        maskImage: 'radial-gradient(ellipse 90% 70% at 50% 45%, black 40%, transparent 85%)',
+        WebkitMaskImage: 'radial-gradient(ellipse 90% 70% at 50% 45%, black 40%, transparent 85%)'
       }}></div>
 
 
-      <div className="relative max-w-6xl w-full">
-        <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12">
+      <div className="relative max-w-6xl w-full mx-auto">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-10 md:gap-12 lg:gap-16">
           <div className={`flex-1 space-y-8 transition-all duration-700 ease-out transform ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="space-y-4">
               <div className="inline-block px-3 py-1 rounded-full border border-emerald/30 bg-emerald/5 backdrop-blur-sm mb-2">
@@ -36,7 +36,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-4 items-center pt-2">
+            <div className="flex flex-wrap gap-4 items-center pt-4">
               <a
                 href={PERSONAL_INFO.cvPath}
                 download
@@ -46,7 +46,7 @@ const Hero = () => {
                 Resume
               </a>
 
-              <div className="flex items-center gap-2 sm:gap-3 pl-2 sm:pl-4">
+              <div className="flex items-center gap-2 sm:gap-3 pl-0 sm:pl-4">
                 <SocialLink href={`mailto:${PERSONAL_INFO.email}`} ariaLabel="Email">
                   <svg className="w-5 h-5" viewBox="0 -2.5 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path fill="currentColor" d="M294,774.474 L284,765.649 L284,777 L304,777 L304,765.649 L294,774.474 Z M294.001,771.812 L284,762.981 L284,762 L304,762 L304,762.981 L294.001,771.812 Z" transform="translate(-340 -922) translate(56 160)"/>
@@ -89,7 +89,7 @@ const Hero = () => {
         </div>
 
         {/* Stats Section - Full Width Below */}
-        <div className={`grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 mt-12 sm:mt-16 md:mt-20 pt-8 transition-all duration-1000 delay-500 transform ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-12 mt-16 md:mt-20 lg:mt-24 pt-8 md:pt-12 transition-all duration-1000 delay-500 transform ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <SlotCounter target={PERSONAL_INFO.age} label="Age" delay={0} />
           <SlotCounter target={PERSONAL_INFO.yearsExperience} label="Years Experience" delay={200} />
           <SlotCounter target={PERSONAL_INFO.projectsCount} label="Projects" delay={400} />
@@ -130,10 +130,9 @@ const SlotCounter = ({ target, label, delay = 0 }: { target: number | string; la
   const numbers = getSlotNumbers(numTarget);
 
   return (
-    <div className="flex flex-col items-center justify-center gap-1 sm:gap-2 text-center">
-      <div className="h-[2.5rem] sm:h-[3rem] md:h-[3.75rem] overflow-hidden relative">
-        {/* Gradient masks for fade effect */}
-        <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-b from-background via-transparent to-background"></div>
+    <div className="flex flex-col items-center justify-center gap-1 sm:gap-2 text-center w-full">
+      {/* Number container with fixed width for consistent alignment */}
+      <div className="h-[2.5rem] sm:h-[3rem] md:h-[3.75rem] w-[3rem] sm:w-[4rem] md:w-[5rem] lg:w-[6rem] overflow-hidden relative mx-auto">
         <div
           className="flex flex-col animate-slot-spin"
           style={{ animationDelay: `${delay}ms` }}
@@ -141,14 +140,15 @@ const SlotCounter = ({ target, label, delay = 0 }: { target: number | string; la
           {numbers.map((num, i) => (
             <div
               key={i}
-              className="h-[2.5rem] sm:h-[3rem] md:h-[3.75rem] flex items-center justify-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground font-mono"
+              className="h-[2.5rem] sm:h-[3rem] md:h-[3.75rem] flex items-center justify-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground font-mono tabular-nums"
             >
               {num}
             </div>
           ))}
         </div>
       </div>
-      <div className="text-xs sm:text-sm text-muted-foreground font-medium tracking-wider uppercase">{label}</div>
+      {/* Label with consistent min-height for alignment */}
+      <div className="text-xs sm:text-sm text-muted-foreground font-medium tracking-wider uppercase min-h-[2.5rem] sm:min-h-[3rem] flex items-center justify-center px-1 leading-tight">{label}</div>
     </div>
   );
 };
