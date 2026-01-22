@@ -1,0 +1,58 @@
+import { Project } from "@/types";
+
+export const projects: Project[] = [
+  {
+    title: "Razor ERP Auto-Fill Chrome Extension",
+    description: "Chrome extension built with Manifest V3 that automates asset audit workflows, reducing form completion time by 70% through intelligent field detection and custom template system.",
+    tags: ["JavaScript", "Chrome Extension API", "Manifest V3", "DOM Manipulation"],
+    image: "",
+    githubUrl: "https://github.com/anthonydoan2001/Razor-ERP-Auto-Fill-Chrome-Extension",
+    liveUrl: undefined,
+    bullets: [
+      "Keyboard shortcut system for instant template application",
+      "Smart field detection handling autocomplete and dropdown interactions",
+      "Device-specific templates (laptop/desktop) for enterprise IT asset processing"
+    ]
+  },
+  {
+    title: "Azure User Provisioning Automation",
+    description: "Enterprise identity management solution using PowerShell 7 and Microsoft Graph API to automate hybrid Active Directory and Azure AD provisioning workflows for Windows Server 2022 environments.",
+    tags: ["PowerShell 7", "Microsoft Graph API", "Active Directory", "Azure AD"],
+    image: "",
+    githubUrl: "https://github.com/anthonydoan2001/azure-user-provisioning-automation",
+    liveUrl: undefined,
+    bullets: [
+      "PowerShell framework integrating on-premises AD with Azure AD",
+      "CSV-driven bulk provisioning with error handling and validation",
+      "Microsoft Graph API integration for programmatic Azure operations"
+    ]
+  },
+  {
+    title: "Personal Dashboard (bigboo.dev)",
+    description: "Full-stack Next.js 14 dashboard aggregating 8+ external APIs (sports, stocks, crypto, weather, entertainment) with intelligent cron-based refresh system featuring market-hours awareness and rate limit management.",
+    tags: ["Next.js 14", "TypeScript", "Prisma ORM", "PostgreSQL", "React Query"],
+    image: "",
+    githubUrl: "https://github.com/anthonydoan2001/bigboodev",
+    liveUrl: undefined,
+    bullets: [
+      "Normalized database schema with Prisma ORM handling diverse API structures",
+      "Automated ETL pipeline with Vercel cron jobs and intelligent scheduling",
+      "Zustand state management with React Query for cache synchronization",
+      "Deployed on Vercel with Supabase PostgreSQL backend"
+    ]
+  },
+  {
+    title: "Portfolio Website",
+    description: "Modern responsive portfolio built with Vite and React featuring shadcn/ui component library, Lenis smooth scrolling, and dark/light theme system.",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Vite", "shadcn/ui"],
+    image: "",
+    githubUrl: "https://github.com/anthonydoan2001/anthonydoan-portfoliowebsite",
+    liveUrl: "https://anthonydoan.dev",
+    bullets: [
+      "Mobile-first responsive design with Tailwind CSS",
+      "20+ Radix UI primitives via shadcn/ui for accessible components",
+      "React Hook Form with Zod validation for type-safe forms",
+      "Lenis smooth scrolling and next-themes integration"
+    ]
+  }
+];

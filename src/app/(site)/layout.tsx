@@ -6,9 +6,9 @@ export default function SiteLayout() {
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       <Outlet />
-      <footer className="py-8 md:py-12 text-center text-muted-foreground px-4">
+      <footer className="py-6 sm:py-8 md:py-12 text-center text-muted-foreground px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <p className="font-mono text-sm md:text-base">
+          <p className="font-mono text-xs sm:text-sm md:text-base">
             Built with React & TypeScript • © 2026 Anthony Doan
           </p>
         </div>

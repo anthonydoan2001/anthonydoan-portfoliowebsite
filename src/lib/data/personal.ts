@@ -47,7 +47,7 @@ export const pcSpecs = {
 export const proxmoxServerSpecs = {
   model: "Dell OptiPlex 5000 Micro PC",
   cpu: "Intel Core i5-12500T (6 Core)",
-  ram: "48GB DDR4",
+  ram: "48GB DDR4 3200MHz",
   storage: "256GB M.2 PCIe SSD",
   os: "Proxmox VE",
 };

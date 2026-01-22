@@ -5,6 +5,7 @@ export interface Project {
   image: string;
   githubUrl?: string;
   liveUrl?: string;
+  bullets?: string[];
 }
 
 export interface Experience {
