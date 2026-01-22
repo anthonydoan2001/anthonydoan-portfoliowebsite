@@ -1,8 +1,8 @@
+import { GitHubIcon } from "@/components/icons/SocialIcons";
 import { PERSONAL_INFO } from "@/lib/constants";
 import { projects } from "@/lib/data";
 import { ArrowRight, Code2, ExternalLink } from "lucide-react";
 import { memo } from "react";
-import { GitHubIcon } from "@/components/icons/SocialIcons";
 
 const Projects = () => {
   return (
@@ -38,7 +38,7 @@ const Projects = () => {
             className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full border border-emerald/30 bg-emerald/5 hover:bg-emerald/10 hover:border-emerald/50 active:bg-emerald/15 text-emerald transition-all duration-300 group touch-manipulation text-sm sm:text-base"
           >
             <GitHubIcon className="w-4 h-4" />
-            <span className="font-medium">View All My Projects on GitHub</span>
+            <span className="font-medium">View All on GitHub</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
