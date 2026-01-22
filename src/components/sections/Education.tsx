@@ -13,7 +13,7 @@ const Education = () => {
             <span>Academic Background</span>
           </div>
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-foreground font-mono leading-tight">
-            My <span className="text-emerald">Education</span>
+            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald via-emerald/80 to-emerald/60">Education</span>
           </h2>
         </div>
 

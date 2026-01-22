@@ -22,7 +22,7 @@ const Experience = () => {
             <span>Career</span>
           </div>
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-foreground font-mono leading-tight">
-            My <span className="text-emerald">Experience</span>
+            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald via-emerald/80 to-emerald/60">Experience</span>
           </h2>
         </div>
 

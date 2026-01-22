@@ -45,7 +45,7 @@ const Personal = () => {
             <span>Personal Life</span>
           </div>
           <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold text-foreground font-mono leading-tight">
-            Life Beyond the <span className="text-emerald">Grind</span>
+            Life Beyond the <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald via-emerald/80 to-emerald/60">Grind</span>
           </h1>
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-normal px-4">
             When I'm not diagnosing hardware or writing code, you'll find me gaming,

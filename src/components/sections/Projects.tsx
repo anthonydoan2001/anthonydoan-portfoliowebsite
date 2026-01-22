@@ -15,7 +15,7 @@ const Projects = () => {
             <span>Projects</span>
           </div>
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-foreground font-mono leading-tight">
-            Featured <span className="text-emerald">Projects</span>
+            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald via-emerald/80 to-emerald/60">Projects</span>
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             A collection of projects showcasing my skills in automation, full-stack development, and problem-solving

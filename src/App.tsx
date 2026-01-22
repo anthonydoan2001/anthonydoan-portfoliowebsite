@@ -11,6 +11,7 @@ import SiteLayout from "./app/(site)/layout";
 const HomePage = lazy(() => import("./app/(site)/page"));
 const PersonalPage = lazy(() => import("./app/(site)/personal"));
 const ContactPage = lazy(() => import("./app/(site)/contact"));
+const PrivacyPage = lazy(() => import("./app/privacy/page"));
 const NotFound = lazy(() => import("./app/not-found"));
 
 // Configure React Query with optimized defaults
@@ -47,6 +48,7 @@ const App = () => (
               <Route path="/contact" element={<ContactPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             </Route>
+            <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
