@@ -1,6 +1,7 @@
 import { PERSONAL_INFO } from "@/lib/constants";
-import { Download } from "lucide-react";
-import { memo, useEffect, useState } from "react";
+import { smoothScrollToElement } from "@/lib/scrollUtils";
+import { ChevronDown, Download, MapPin } from "lucide-react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { EmailIcon, GitHubIcon, LinkedInIcon } from "@/components/icons/SocialIcons";
 
 const Hero = () => {
@@ -8,6 +9,11 @@ const Hero = () => {
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  const handleScrollDown = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    smoothScrollToElement("about", 80, 600);
   }, []);
 
   return (
@@ -19,7 +25,6 @@ const Hero = () => {
         maskComposite: 'intersect',
         WebkitMaskComposite: 'source-in'
       }}></div>
-
 
       <div className="relative max-w-6xl w-full mx-auto">
         <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 sm:gap-10 md:gap-12 lg:gap-16">
@@ -51,16 +56,16 @@ const Hero = () => {
               </a>
 
               <div className="flex items-center gap-2 sm:gap-3 pl-0 sm:pl-4">
-                <SocialLink href={`mailto:${PERSONAL_INFO.email}`} ariaLabel="Email">
-                  <EmailIcon className="w-6 h-6 sm:w-7 sm:h-7" />
+                <SocialLink href={`mailto:${PERSONAL_INFO.email}`} ariaLabel="Email" label="Email">
+                  <EmailIcon className="w-5 h-5" />
                 </SocialLink>
 
-                <SocialLink href={PERSONAL_INFO.github} ariaLabel="GitHub">
-                  <GitHubIcon className="w-6 h-6 sm:w-7 sm:h-7" />
+                <SocialLink href={PERSONAL_INFO.github} ariaLabel="GitHub" label="GitHub">
+                  <GitHubIcon className="w-5 h-5" />
                 </SocialLink>
 
-                <SocialLink href={PERSONAL_INFO.linkedin} ariaLabel="LinkedIn">
-                  <LinkedInIcon className="w-6 h-6 sm:w-7 sm:h-7" />
+                <SocialLink href={PERSONAL_INFO.linkedin} ariaLabel="LinkedIn" label="LinkedIn">
+                  <LinkedInIcon className="w-5 h-5" />
                 </SocialLink>
               </div>
             </div>
@@ -90,68 +95,54 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Stats Section - Full Width Below */}
-        <div className={`grid grid-cols-3 gap-2 xs:gap-3 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-12 mt-12 sm:mt-16 md:mt-20 lg:mt-24 pt-6 sm:pt-8 md:pt-12 transition-all duration-1000 delay-500 transform ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <SlotCounter target={PERSONAL_INFO.age} label="Age" delay={0} />
-          <SlotCounter target={PERSONAL_INFO.yearsExperience} label="Years Experience" delay={200} />
-          <SlotCounter target={PERSONAL_INFO.projectsCount} label="Projects" delay={400} />
+        {/* Status Badges */}
+        <div className={`flex flex-wrap gap-3 mt-12 sm:mt-16 md:mt-20 lg:mt-24 pt-6 sm:pt-8 md:pt-12 transition-all duration-1000 delay-500 transform ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <StatusBadge>
+            <span className="w-2 h-2 rounded-full bg-emerald animate-pulse flex-shrink-0" />
+            <span>Currently at <span className="text-foreground font-medium">{PERSONAL_INFO.currentCompany}</span></span>
+          </StatusBadge>
+          <StatusBadge>
+            <MapPin className="w-3.5 h-3.5 text-emerald flex-shrink-0" />
+            <span>{PERSONAL_INFO.location}</span>
+          </StatusBadge>
+          <StatusBadge>
+            <span className="w-2 h-2 rounded-full bg-emerald flex-shrink-0" />
+            <span>Available for opportunities</span>
+          </StatusBadge>
         </div>
       </div>
+
+      {/* Scroll down indicator */}
+      <button
+        onClick={handleScrollDown}
+        className={`absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground/50 animate-bounce transition-opacity duration-1000 delay-[2000ms] ${mounted ? 'opacity-100' : 'opacity-0'}`}
+        aria-label="Scroll to content"
+      >
+        <ChevronDown className="w-6 h-6" />
+      </button>
     </section>
   );
 };
 
-const SocialLink = memo(({ href, ariaLabel, children }: { href: string; ariaLabel: string; children: React.ReactNode }) => {
+const StatusBadge = memo(({ children }: { children: React.ReactNode }) => (
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/50 bg-secondary/20 text-sm text-muted-foreground">
+    {children}
+  </div>
+));
+
+const SocialLink = memo(({ href, ariaLabel, label, children }: { href: string; ariaLabel: string; label: string; children: React.ReactNode }) => {
   const isExternal = href.startsWith("http");
   return (
     <a
       href={href}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full border border-emerald/30 text-emerald/80 hover:text-emerald hover:bg-emerald/10 hover:border-emerald hover:scale-110 active:scale-95 flex items-center justify-center transition-all duration-300 touch-manipulation"
+      className="px-4 py-2.5 rounded-full border border-emerald/30 text-emerald/80 hover:text-emerald hover:bg-emerald/10 hover:border-emerald active:scale-95 flex items-center gap-2 transition-all duration-300 touch-manipulation"
       aria-label={ariaLabel}
     >
       {children}
+      <span className="text-sm font-medium">{label}</span>
     </a>
-  );
-});
-
-// Helper to generate sequence of numbers ending at target
-// Creates a longer reel for more dramatic slot effect
-const getSlotNumbers = (target: number) => {
-  const count = 12; // More numbers for longer spin effect
-  const numbers = [];
-  for (let i = count - 1; i >= 0; i--) {
-    numbers.push(Math.max(0, target - i));
-  }
-  return numbers;
-};
-
-const SlotCounter = memo(({ target, label, delay = 0 }: { target: number | string; label: string; delay?: number }) => {
-  const numTarget = typeof target === 'number' ? target : parseInt(String(target));
-  const numbers = getSlotNumbers(numTarget);
-
-  return (
-    <div className="flex flex-col items-center justify-center gap-1 xs:gap-1.5 sm:gap-2 text-center w-full px-1">
-      {/* Number container with fixed width for consistent alignment */}
-      <div className="h-[2.25rem] xs:h-[2.5rem] sm:h-[3rem] md:h-[3.75rem] w-[2.5rem] xs:w-[3rem] sm:w-[4rem] md:w-[5rem] lg:w-[6rem] overflow-hidden relative mx-auto">
-        <div
-          className="flex flex-col animate-slot-spin"
-          style={{ animationDelay: `${delay}ms` }}
-        >
-          {numbers.map((num, i) => (
-            <div
-              key={i}
-              className="h-[2.25rem] xs:h-[2.5rem] sm:h-[3rem] md:h-[3.75rem] flex items-center justify-center text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground font-mono tabular-nums"
-            >
-              {num}
-            </div>
-          ))}
-        </div>
-      </div>
-      {/* Label with consistent min-height for alignment */}
-      <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground font-medium tracking-wider uppercase min-h-[2.25rem] xs:min-h-[2.5rem] sm:min-h-[3rem] flex items-center justify-center px-0.5 sm:px-1 leading-tight text-center">{label}</div>
-    </div>
   );
 });
 

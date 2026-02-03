@@ -175,20 +175,6 @@ All colors MUST be HSL.
     animation: spin-slow 10s linear infinite;
   }
 
-  /* Slot machine animation for numbers */
-  @keyframes slot-spin {
-    0% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(-91.666%);
-    }
-  }
-
-  .animate-slot-spin {
-    animation: slot-spin 1.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-  }
-
   @keyframes fade-in-up {
     0% {
       opacity: 0;
@@ -260,5 +246,111 @@ All colors MUST be HSL.
 
   .animate-slide-in-right {
     animation: slide-in-right 0.4s var(--ease-smooth) forwards;
+  }
+
+  /* Scroll-reveal animations */
+  @keyframes reveal-up {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes reveal-left {
+    0% {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes reveal-right {
+    0% {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes reveal-scale {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .reveal-up,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 0;
+  }
+
+  .revealed .reveal-up {
+    animation: reveal-up 0.6s var(--ease-smooth) both;
+  }
+
+  .revealed .reveal-left {
+    animation: reveal-left 0.6s var(--ease-smooth) both;
+  }
+
+  .revealed .reveal-right {
+    animation: reveal-right 0.6s var(--ease-smooth) both;
+  }
+
+  .revealed .reveal-scale {
+    animation: reveal-scale 0.6s var(--ease-smooth) both;
+  }
+
+  /* Stagger delay classes for sequential reveals */
+  .stagger-1 { animation-delay: 100ms; }
+  .stagger-2 { animation-delay: 200ms; }
+  .stagger-3 { animation-delay: 300ms; }
+  .stagger-4 { animation-delay: 400ms; }
+  .stagger-5 { animation-delay: 500ms; }
+  .stagger-6 { animation-delay: 600ms; }
+
+  /* Section dividers */
+  .section-divider-gradient {
+    height: 1px;
+    max-width: 80%;
+    margin: 0 auto;
+    background: linear-gradient(
+      to right,
+      transparent,
+      hsl(var(--emerald) / 0.3),
+      transparent
+    );
+  }
+
+  .section-divider-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-divider-dots::before,
+  .section-divider-dots::after,
+  .section-divider-dots span {
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 9999px;
+    background: hsl(var(--emerald) / 0.4);
   }
 }

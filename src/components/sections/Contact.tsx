@@ -1,17 +1,24 @@
 import { EmailIcon, GitHubIcon, LinkedInIcon, MapPinIcon, PhoneIcon } from "@/components/icons/SocialIcons";
 import { PERSONAL_INFO } from "@/lib/constants";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Download } from "lucide-react";
+import { useInView } from "@/hooks/useInView";
 
 const Contact = () => {
+  const { ref, isInView } = useInView({ threshold: 0.1 });
+
   return (
-    <section className="py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-[calc(100vh-6rem)] flex items-center" id="contact">
+    <section
+      className="py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-[calc(100vh-6rem)] flex items-center"
+      id="contact"
+      ref={ref as React.RefObject<HTMLElement>}
+    >
       {/* Background Accents */}
       <div className="absolute top-0 right-0 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-emerald/5 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-0 left-0 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-emerald/3 rounded-full blur-3xl -z-10" />
 
-      <div className="max-w-7xl mx-auto w-full">
+      <div className={`max-w-7xl mx-auto w-full ${isInView ? 'revealed' : ''}`}>
         {/* Hero Header */}
-        <div className="text-center mb-8 sm:mb-10 md:mb-12 space-y-3 sm:space-y-4">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12 space-y-3 sm:space-y-4 reveal-up">
           <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
             Let's Work{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald via-emerald/80 to-emerald/60">
@@ -25,48 +32,57 @@ const Contact = () => {
 
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mb-8 sm:mb-10">
-          {/* Email - Large Card */}
-          <GradientCard
-            href={`mailto:${PERSONAL_INFO.email}`}
-            className="sm:col-span-2 lg:col-span-2"
-            icon={<EmailIcon className="w-5 h-5 sm:w-6 sm:h-6" />}
-            label="Email"
-            value={PERSONAL_INFO.email}
-            description="Preferred for detailed inquiries"
-          />
+          {/* Email - Large Card (Primary) */}
+          <div className="reveal-up stagger-1">
+            <GradientCard
+              href={`mailto:${PERSONAL_INFO.email}`}
+              className="sm:col-span-2 lg:col-span-2"
+              icon={<EmailIcon className="w-5 h-5 sm:w-6 sm:h-6" />}
+              label="Email"
+              value={PERSONAL_INFO.email}
+              description="Preferred for detailed inquiries"
+              variant="primary"
+            />
+          </div>
 
           {/* Phone */}
-          <GradientCard
-            href={`tel:${PERSONAL_INFO.phone.replace(/\D/g, '')}`}
-            icon={<PhoneIcon className="w-5 h-5 sm:w-6 sm:h-6" />}
-            label="Phone"
-            value={PERSONAL_INFO.phone}
-            description="Available 9am-5pm CT"
-          />
+          <div className="reveal-up stagger-2">
+            <GradientCard
+              href={`tel:${PERSONAL_INFO.phone.replace(/\D/g, '')}`}
+              icon={<PhoneIcon className="w-5 h-5 sm:w-6 sm:h-6" />}
+              label="Phone"
+              value={PERSONAL_INFO.phone}
+              description="Available 9am-5pm CT"
+            />
+          </div>
 
           {/* LinkedIn */}
-          <GradientCard
-            href={PERSONAL_INFO.linkedin}
-            icon={<LinkedInIcon className="w-5 h-5 sm:w-6 sm:h-6" />}
-            label="LinkedIn"
-            value="anthonyduydoan"
-            description="Connect professionally"
-            external
-          />
+          <div className="reveal-up stagger-3">
+            <GradientCard
+              href={PERSONAL_INFO.linkedin}
+              icon={<LinkedInIcon className="w-5 h-5 sm:w-6 sm:h-6" />}
+              label="LinkedIn"
+              value="anthonyduydoan"
+              description="Connect professionally"
+              external
+            />
+          </div>
 
           {/* GitHub */}
-          <GradientCard
-            href={PERSONAL_INFO.github}
-            icon={<GitHubIcon className="w-5 h-5 sm:w-6 sm:h-6" />}
-            label="GitHub"
-            value="anthonydoan2001"
-            description="Check out my projects"
-            external
-          />
+          <div className="reveal-up stagger-4">
+            <GradientCard
+              href={PERSONAL_INFO.github}
+              icon={<GitHubIcon className="w-5 h-5 sm:w-6 sm:h-6" />}
+              label="GitHub"
+              value="anthonydoan2001"
+              description="Check out my projects"
+              external
+            />
+          </div>
 
           {/* Location - Non-clickable */}
-          <div className="relative">
-            <div className="relative h-full backdrop-blur-sm bg-gradient-to-br from-secondary/40 via-secondary/20 to-background/40 border border-border/50 rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6">
+          <div className="relative reveal-up stagger-5">
+            <div className="relative h-full backdrop-blur-sm bg-gradient-to-br from-secondary/40 via-secondary/20 to-background/40 border border-dashed border-border/50 rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6">
               <div className="flex items-start justify-between mb-3">
                 <div className="p-2 sm:p-2.5 rounded-xl bg-emerald/10 text-emerald flex items-center justify-center">
                   <MapPinIcon className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -88,14 +104,25 @@ const Contact = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center pt-6 sm:pt-8">
+        <div className="text-center pt-6 sm:pt-8 space-y-4 reveal-up stagger-6">
+          <p className="text-lg font-semibold text-foreground">Ready to connect?</p>
           <a
             href={`mailto:${PERSONAL_INFO.email}`}
-            className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-emerald text-background font-semibold rounded-full hover:bg-emerald/90 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-emerald/20 text-sm sm:text-base touch-manipulation"
+            className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 sm:py-4 bg-emerald text-background font-semibold rounded-full hover:bg-emerald/90 active:scale-95 transition-all duration-300 shadow-lg shadow-emerald/20 text-sm sm:text-base touch-manipulation"
           >
             <span>Send me an email</span>
             <ArrowUpRight className="w-4 h-4" />
           </a>
+          <div>
+            <a
+              href={PERSONAL_INFO.cvPath}
+              download
+              className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-emerald transition-colors underline underline-offset-4"
+            >
+              <Download className="w-3.5 h-3.5" />
+              Or download my resume
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -110,6 +137,7 @@ interface GradientCardProps {
   description: string;
   external?: boolean;
   className?: string;
+  variant?: "default" | "primary";
 }
 
 const GradientCard = ({
@@ -119,7 +147,8 @@ const GradientCard = ({
   value,
   description,
   external,
-  className = ""
+  className = "",
+  variant = "default"
 }: GradientCardProps) => (
   <a
     href={href}
@@ -131,9 +160,17 @@ const GradientCard = ({
     <div className="absolute -inset-1 bg-gradient-to-r from-emerald/30 via-emerald/10 to-emerald/30 rounded-2xl sm:rounded-3xl blur-2xl opacity-0 group-hover:opacity-50 transition-all duration-700 ease-out" />
 
     {/* Card Content */}
-    <div className="relative h-full backdrop-blur-sm bg-gradient-to-br from-secondary/40 via-secondary/20 to-background/40 border border-border/50 rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6 hover:border-emerald/40 active:border-emerald/30 transition-all duration-300 hover:shadow-lg hover:shadow-emerald/10 active:scale-[0.98]">
+    <div className={`relative h-full backdrop-blur-sm border rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6 hover:border-emerald/40 active:border-emerald/30 transition-all duration-300 hover:shadow-lg hover:shadow-emerald/10 active:scale-[0.98] ${
+      variant === "primary"
+        ? "bg-gradient-to-br from-emerald/10 via-emerald/5 to-transparent border-emerald/20"
+        : "bg-gradient-to-br from-secondary/40 via-secondary/20 to-background/40 border-border/50"
+    }`}>
       <div className="flex items-start justify-between mb-3">
-        <div className="p-2 sm:p-2.5 rounded-xl bg-emerald/10 text-emerald group-hover:bg-emerald group-hover:text-background transition-all duration-300 flex items-center justify-center">
+        <div className={`p-2 sm:p-2.5 rounded-xl transition-all duration-300 flex items-center justify-center ${
+          variant === "primary"
+            ? "bg-emerald text-background"
+            : "bg-emerald/10 text-emerald group-hover:bg-emerald group-hover:text-background"
+        }`}>
           {icon}
         </div>
         {external && (

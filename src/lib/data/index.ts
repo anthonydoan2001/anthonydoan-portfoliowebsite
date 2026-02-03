@@ -8,7 +8,6 @@ export {
   currentlyPlaying,
   favoriteGames,
   currentlyReading,
-  favoriteGenres,
   homelabSetup,
   pcSpecs,
   proxmoxServerSpecs,

@@ -3,13 +3,19 @@ import { PERSONAL_INFO } from "@/lib/constants";
 import { projects } from "@/lib/data";
 import { ArrowRight, Code2, ExternalLink } from "lucide-react";
 import { memo } from "react";
+import { useInView } from "@/hooks/useInView";
 
 const Projects = () => {
+  const { ref, isInView } = useInView({ threshold: 0.1 });
+
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-background via-background to-secondary/5">
-      <div className="max-w-7xl mx-auto">
+    <section
+      className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-background via-background to-secondary/5"
+      ref={ref as React.RefObject<HTMLElement>}
+    >
+      <div className={`max-w-7xl mx-auto ${isInView ? 'revealed' : ''}`}>
         {/* Header */}
-        <div className="text-center mb-10 sm:mb-12 md:mb-16 space-y-3 sm:space-y-4 md:space-y-6">
+        <div className="text-center mb-10 sm:mb-12 md:mb-16 space-y-3 sm:space-y-4 md:space-y-6 reveal-up">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald/5 border border-emerald/20 text-emerald text-xs font-medium uppercase tracking-wider">
             <Code2 className="w-3 h-3" />
             <span>Projects</span>
@@ -25,12 +31,14 @@ const Projects = () => {
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 gap-5 sm:gap-6 md:gap-8 lg:gap-10 mb-10 sm:mb-12 items-stretch">
           {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
+            <div key={index} className={`reveal-up stagger-${index + 1}`}>
+              <ProjectCard project={project} index={index} />
+            </div>
           ))}
         </div>
 
         {/* View All Projects Link */}
-        <div className="text-center">
+        <div className="text-center reveal-up stagger-5">
           <a
             href={PERSONAL_INFO.github}
             target="_blank"
@@ -48,20 +56,38 @@ const Projects = () => {
 };
 
 const ProjectCard = memo(({ project, index }: { project: typeof projects[0]; index: number }) => {
+  const isFeatured = index === 0;
+
   return (
     <div
-      className="relative h-full rounded-xl sm:rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm overflow-hidden"
+      className={`relative h-full rounded-xl sm:rounded-2xl border bg-card/50 backdrop-blur-sm overflow-hidden ${
+        isFeatured
+          ? "border-emerald/20 shadow-[0_0_30px_-10px_hsl(var(--emerald)/0.15)]"
+          : "border-border/50"
+      }`}
     >
+      {/* Watermark index number */}
+      <span className="absolute top-4 left-5 text-6xl font-bold font-mono text-foreground/[0.04] select-none pointer-events-none">
+        0{index + 1}
+      </span>
+
+      {/* Featured badge */}
+      {isFeatured && (
+        <span className="absolute top-4 right-4 px-2 py-0.5 text-[10px] uppercase tracking-wider font-semibold bg-emerald/10 text-emerald border border-emerald/20 rounded-full z-10">
+          Featured
+        </span>
+      )}
+
       {/* Content */}
       <div className="relative p-5 sm:p-6 md:p-8 h-full flex flex-col">
-        {/* Header and Description Container - Fixed height for alignment */}
+        {/* Header and Description Container */}
         <div className="mb-5 sm:mb-6 min-h-[8rem] sm:min-h-[10rem] flex flex-col">
           {/* Header with Links */}
           <div className="mb-3 sm:mb-4 flex items-start justify-between gap-2 sm:gap-3 md:gap-4">
             <h3 className="text-base sm:text-lg md:text-xl font-bold text-foreground font-mono flex-1 leading-tight min-w-0 pr-2">
               {project.title}
             </h3>
-            <div className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
+            <div className={`flex items-center gap-2 sm:gap-2.5 flex-shrink-0 ${isFeatured ? 'mt-7' : ''}`}>
               {project.githubUrl && (
                 <a
                   href={project.githubUrl}
@@ -100,7 +126,7 @@ const ProjectCard = memo(({ project, index }: { project: typeof projects[0]; ind
           <div className="space-y-2 sm:space-y-2.5 mb-5 sm:mb-6 flex-1">
             {project.bullets.map((bullet, idx) => (
               <div key={idx} className="flex gap-2 sm:gap-3 items-start">
-                <span className="text-emerald mt-0.5 flex-shrink-0 w-3 sm:w-4 text-right text-xs">▹</span>
+                <span className="text-emerald mt-0.5 flex-shrink-0 w-3 sm:w-4 text-right text-xs">&#9657;</span>
                 <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed flex-1">{bullet}</p>
               </div>
             ))}

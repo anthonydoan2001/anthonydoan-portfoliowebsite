@@ -16,15 +16,6 @@ export const currentlyReading = [
   { title: "A Short History of China", type: "History" },
 ];
 
-export const favoriteGenres = [
-  "History",
-  "Science",
-  "Fantasy",
-  "Action",
-  "Progression",
-  "Sci-Fi",
-];
-
 export const homelabSetup = [
   { name: "Nextcloud", description: "File Sync/Share" },
   { name: "Docker", description: "Containers" },
