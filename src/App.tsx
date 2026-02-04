@@ -10,6 +10,7 @@ import SiteLayout from "./app/(site)/layout";
 // Lazy load page components for code splitting
 const HomePage = lazy(() => import("./app/(site)/page"));
 const PersonalPage = lazy(() => import("./app/(site)/personal"));
+const ProjectsPage = lazy(() => import("./app/(site)/projects"));
 const ContactPage = lazy(() => import("./app/(site)/contact"));
 const PrivacyPage = lazy(() => import("./app/privacy/page"));
 const NotFound = lazy(() => import("./app/not-found"));
@@ -44,6 +45,7 @@ const App = () => (
           <Routes>
             <Route element={<SiteLayout />}>
               <Route path="/" element={<HomePage />} />
+              <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/personal" element={<PersonalPage />} />
               <Route path="/contact" element={<ContactPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

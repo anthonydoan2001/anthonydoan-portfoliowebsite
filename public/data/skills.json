@@ -1,0 +1,32 @@
+{
+  "languages": [
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "C++",
+    "HTML",
+    "CSS",
+    "Bash"
+  ],
+  "frameworks": [
+    "React",
+    "Node.js",
+    "Next.js",
+    "Tailwind CSS"
+  ],
+  "tools": [
+    "Git",
+    "GitHub",
+    "VS Code",
+    "PowerShell",
+    "Linux",
+    "Windows Server"
+  ],
+  "infrastructure": [
+    "PostgreSQL",
+    "Supabase",
+    "Azure",
+    "Docker",
+    "Proxmox"
+  ]
+}

@@ -33,13 +33,13 @@ const Hero = () => {
               <div className="inline-block px-3 py-1 rounded-full border border-emerald/30 bg-emerald/5 backdrop-blur-sm mb-2">
                 <p className="text-emerald text-xs uppercase tracking-wider font-semibold">{PERSONAL_INFO.title}</p>
               </div>
-              <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-mono leading-tight tracking-tight">
+              <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-mono leading-tight tracking-tight">
                 Hello, I'm<br />
                 <span className="text-emerald">
                   {PERSONAL_INFO.name}
                 </span>
               </h1>
-              <div className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground flex items-center gap-2">
+              <div className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground flex items-center gap-2">
                 <span>{PERSONAL_INFO.subtitle}</span>
                 <span className="w-0.5 h-[1.2em] bg-emerald animate-blink"></span>
               </div>
@@ -49,7 +49,7 @@ const Hero = () => {
               <a
                 href={PERSONAL_INFO.cvPath}
                 download
-                className="group px-6 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-emerald text-emerald hover:bg-emerald hover:text-background flex items-center gap-2 transition-all duration-300 font-bold uppercase text-sm sm:text-base tracking-wider shadow-[0_0_15px_rgba(16,185,129,0.2)] hover:shadow-[0_0_25px_rgba(16,185,129,0.4)] active:scale-95"
+                className="group px-6 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-emerald text-emerald hover:bg-emerald hover:text-background flex items-center gap-2 transition-all duration-300 font-bold uppercase text-xs sm:text-sm tracking-wider shadow-[0_0_15px_rgba(16,185,129,0.2)] hover:shadow-[0_0_25px_rgba(16,185,129,0.4)] active:scale-95"
               >
                 <Download className="w-5 h-5 sm:w-6 sm:h-6 group-hover:animate-bounce" />
                 Resume
@@ -125,7 +125,7 @@ const Hero = () => {
 };
 
 const StatusBadge = memo(({ children }: { children: React.ReactNode }) => (
-  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/50 bg-secondary/20 text-sm text-muted-foreground">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/50 bg-secondary/20 text-xs sm:text-sm text-muted-foreground">
     {children}
   </div>
 ));

@@ -19,13 +19,13 @@ const Contact = () => {
       <div className={`max-w-7xl mx-auto w-full ${isInView ? 'revealed' : ''}`}>
         {/* Hero Header */}
         <div className="text-center mb-8 sm:mb-10 md:mb-12 space-y-3 sm:space-y-4 reveal-up">
-          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+          <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
             Let's Work{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald via-emerald/80 to-emerald/60">
               Together
             </span>
           </h1>
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
+          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto px-4">
             I'm currently available for immediate start and flexible with onsite work.
           </p>
         </div>
@@ -92,10 +92,10 @@ const Contact = () => {
                 <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                   Location
                 </div>
-                <div className="text-sm sm:text-base md:text-lg font-bold text-foreground break-words">
+                <div className="text-sm md:text-base font-bold text-foreground break-words">
                   {PERSONAL_INFO.location}
                 </div>
-                <div className="text-xs sm:text-sm text-muted-foreground">
+                <div className="text-sm text-muted-foreground">
                   Open to onsite & hybrid work
                 </div>
               </div>
@@ -105,10 +105,10 @@ const Contact = () => {
 
         {/* CTA Section */}
         <div className="text-center pt-6 sm:pt-8 space-y-4 reveal-up stagger-6">
-          <p className="text-lg font-semibold text-foreground">Ready to connect?</p>
+          <p className="text-sm sm:text-base font-semibold text-foreground">Ready to connect?</p>
           <a
             href={`mailto:${PERSONAL_INFO.email}`}
-            className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 sm:py-4 bg-emerald text-background font-semibold rounded-full hover:bg-emerald/90 active:scale-95 transition-all duration-300 shadow-lg shadow-emerald/20 text-sm sm:text-base touch-manipulation"
+            className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 sm:py-4 bg-emerald text-background font-semibold rounded-full hover:bg-emerald/90 active:scale-95 transition-all duration-300 shadow-lg shadow-emerald/20 text-sm touch-manipulation"
           >
             <span>Send me an email</span>
             <ArrowUpRight className="w-4 h-4" />
@@ -182,10 +182,10 @@ const GradientCard = ({
         <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground group-hover:text-emerald/70 transition-colors duration-300">
           {label}
         </div>
-        <div className="text-sm sm:text-base md:text-lg font-bold text-foreground group-hover:text-emerald transition-colors duration-300 break-words">
+        <div className="text-sm md:text-base font-bold text-foreground group-hover:text-emerald transition-colors duration-300 break-words">
           {value}
         </div>
-        <div className="text-xs sm:text-sm text-muted-foreground">
+        <div className="text-sm text-muted-foreground">
           {description}
         </div>
       </div>

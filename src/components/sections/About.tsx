@@ -37,7 +37,7 @@ const About = () => {
             <User className="w-3 h-3" />
             <span>About Me</span>
           </div>
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-foreground font-mono leading-tight">
+          <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground font-mono leading-tight">
             A look into <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald via-emerald/80 to-emerald/60">my background</span>
           </h2>
         </div>
@@ -53,7 +53,7 @@ const About = () => {
           {/* Left Column - Text Content */}
           <div className="space-y-6 sm:space-y-8">
             <div className="space-y-4 sm:space-y-6 reveal-up stagger-2">
-              <div className="text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed space-y-3 sm:space-y-4">
+              <div className="text-muted-foreground text-sm md:text-base leading-relaxed space-y-3 sm:space-y-4">
                 {aboutContent.paragraphs.map((paragraph, index) => (
                   <p key={index}>{paragraph}</p>
                 ))}
@@ -62,7 +62,7 @@ const About = () => {
               <div className="pt-2 sm:pt-4">
                 <Link
                   to={aboutContent.moreAboutLink.path}
-                  className="inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-full border border-emerald/30 text-emerald hover:bg-emerald/5 hover:border-emerald/50 active:bg-emerald/10 transition-all duration-300 text-xs sm:text-sm font-medium touch-manipulation"
+                  className="inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-full border border-emerald/30 text-emerald hover:bg-emerald/5 hover:border-emerald/50 active:bg-emerald/10 transition-all duration-300 text-sm font-medium touch-manipulation"
                 >
                   <span className="mr-2">&#8599;</span> {aboutContent.moreAboutLink.text}
                 </Link>
@@ -70,12 +70,12 @@ const About = () => {
             </div>
 
             <div className="space-y-3 sm:space-y-4 pt-2 reveal-up stagger-3">
-              <h3 className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-muted-foreground">Recently Used Technologies</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Recently Used Technologies</h3>
               <div className="flex flex-wrap gap-2 sm:gap-3">
                 {techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-border bg-secondary/30 text-foreground/80 text-xs sm:text-sm cursor-default"
+                    className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-border bg-secondary/30 text-foreground/80 text-sm cursor-default"
                   >
                     {tech}
                   </span>
@@ -85,7 +85,7 @@ const About = () => {
 
             {/* Education - Compact Card */}
             <div className="space-y-3 sm:space-y-4 pt-2 reveal-up stagger-4">
-              <h3 className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
                 <GraduationCap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald flex-shrink-0" />
                 Education
               </h3>
@@ -98,18 +98,18 @@ const About = () => {
                   />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-sm sm:text-base font-bold text-foreground leading-tight">
+                  <div className="text-sm font-bold text-foreground leading-tight">
                     {EDUCATION_INFO.degree}
                   </div>
-                  <div className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+                  <div className="text-sm text-muted-foreground mt-0.5">
                     {EDUCATION_INFO.university} | {EDUCATION_INFO.period}
                   </div>
-                  <div className="text-xs text-muted-foreground/70 mt-0.5">
+                  <div className="text-sm text-muted-foreground/70 mt-0.5">
                     {EDUCATION_INFO.minor}
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-muted-foreground uppercase tracking-wider mt-3">
+              <div className="flex items-center gap-2 text-sm font-bold text-muted-foreground uppercase tracking-wider mt-3">
                 <BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald flex-shrink-0" />
                 Relevant Coursework
               </div>
@@ -117,7 +117,7 @@ const About = () => {
                 {educationCourses.map((course, index) => (
                   <span
                     key={index}
-                    className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-border bg-secondary/30 text-foreground/80 text-xs sm:text-sm cursor-default"
+                    className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-border bg-secondary/30 text-foreground/80 text-sm cursor-default"
                   >
                     {course}
                   </span>

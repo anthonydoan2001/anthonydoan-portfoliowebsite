@@ -37,7 +37,7 @@ const Navigation = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-1.5 sm:gap-2 active:opacity-70 transition-opacity" onClick={handleLinkClick}>
-              <span className="text-base xs:text-lg sm:text-xl md:text-2xl font-bold font-mono">{NAVIGATION_BRAND}</span>
+              <span className="text-sm sm:text-base md:text-lg font-bold font-mono">{NAVIGATION_BRAND}</span>
               <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-emerald rounded-full"></span>
             </Link>
 
@@ -49,7 +49,7 @@ const Navigation = () => {
                     key={index}
                     href={link.href}
                     onClick={(e) => handleAnchorClick(e, link.href)}
-                    className="text-sm lg:text-base font-semibold transition-colors pb-1 text-foreground hover:text-emerald active:text-emerald/70"
+                    className="text-sm font-semibold transition-colors pb-1 text-foreground hover:text-emerald active:text-emerald/70"
                   >
                     {link.label}
                   </a>
@@ -58,7 +58,7 @@ const Navigation = () => {
                     key={index}
                     to={link.href}
                     onClick={handleLinkClick}
-                    className={`text-sm lg:text-base font-semibold transition-colors pb-1 ${
+                    className={`text-sm font-semibold transition-colors pb-1 ${
                       isActive(link.href)
                         ? "text-emerald border-b-2 border-emerald hover:text-emerald-light"
                         : "text-foreground hover:text-emerald"
@@ -94,7 +94,7 @@ const Navigation = () => {
                         handleAnchorClick(e, link.href);
                         closeMenu();
                       }}
-                      className="text-base font-semibold transition-colors text-foreground hover:text-emerald active:text-emerald/70 py-3 px-2 rounded-lg hover:bg-secondary/30 active:bg-secondary/50 touch-manipulation"
+                      className="text-sm font-semibold transition-colors text-foreground hover:text-emerald active:text-emerald/70 py-3 px-2 rounded-lg hover:bg-secondary/30 active:bg-secondary/50 touch-manipulation"
                     >
                       {link.label}
                     </a>
@@ -103,7 +103,7 @@ const Navigation = () => {
                       key={index}
                       to={link.href}
                       onClick={handleLinkClick}
-                      className={`text-base font-semibold transition-colors py-3 px-2 rounded-lg ${
+                      className={`text-sm font-semibold transition-colors py-3 px-2 rounded-lg ${
                         isActive(link.href)
                           ? "text-emerald bg-emerald/10"
                           : "text-foreground hover:text-emerald hover:bg-secondary/30"

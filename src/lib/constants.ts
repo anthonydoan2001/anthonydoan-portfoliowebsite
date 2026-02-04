@@ -22,6 +22,7 @@ export const EDUCATION_INFO = {
 
 export const NAVIGATION_LINKS = [
   { href: "/", label: "Professional" },
+  { href: "/projects", label: "Projects" },
   { href: "/personal", label: "Personal" },
   { href: "/contact", label: "Contact" }
 ] as const;

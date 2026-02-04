@@ -47,7 +47,7 @@ const Experience = () => {
             <Briefcase className="w-3 h-3" />
             <span>Career</span>
           </div>
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-foreground font-mono leading-tight">
+          <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground font-mono leading-tight">
             My <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald via-emerald/80 to-emerald/60">Experience</span>
           </h2>
         </div>
@@ -71,7 +71,7 @@ const Experience = () => {
                 >
                   <Icon className={`w-4 h-4 flex-shrink-0 ${isSelected ? "text-emerald" : ""}`} />
                   <div className="text-left min-w-0">
-                    <div className={`text-xs sm:text-sm font-bold transition-colors duration-300 leading-tight whitespace-nowrap ${isSelected ? "text-emerald" : "text-foreground"}`}>
+                    <div className={`text-sm font-bold transition-colors duration-300 leading-tight whitespace-nowrap ${isSelected ? "text-emerald" : "text-foreground"}`}>
                       {exp.company}
                     </div>
                   </div>
@@ -120,7 +120,7 @@ const Experience = () => {
                         <Icon className="w-4 h-4" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className={`text-base md:text-lg font-bold transition-colors duration-300 leading-tight ${isSelected ? "text-emerald" : "text-foreground group-hover:text-emerald/80"}`}>
+                        <div className={`text-sm md:text-base font-bold transition-colors duration-300 leading-tight ${isSelected ? "text-emerald" : "text-foreground group-hover:text-emerald/80"}`}>
                           {exp.company}
                         </div>
                         <div className={`text-sm font-medium mt-1 transition-colors duration-300 break-words ${isSelected ? "text-foreground/80" : "text-muted-foreground"}`}>
@@ -145,15 +145,15 @@ const Experience = () => {
                 {/* Title Header */}
                 <div className="space-y-3 sm:space-y-4 border-b border-border/50 pb-4 sm:pb-6">
                   <div>
-                    <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-foreground tracking-tight font-mono mb-1.5 sm:mb-2 leading-tight">
+                    <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-foreground tracking-tight font-mono mb-1.5 sm:mb-2 leading-tight">
                       {selectedExperience.title}
                     </h3>
-                    <div className="text-sm sm:text-base md:text-lg text-emerald font-semibold">
+                    <div className="text-sm md:text-base text-emerald font-semibold">
                       @ {selectedExperience.company}
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm text-muted-foreground">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1.5 sm:gap-2 bg-secondary/50 px-3 sm:px-4 py-1 sm:py-1.5 rounded-md border border-border/50">
                       <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald/70 flex-shrink-0" />
                       <span className="whitespace-nowrap">{selectedExperience.period}</span>
@@ -179,21 +179,21 @@ const Experience = () => {
                 <div className="space-y-3 sm:space-y-4">
                   {selectedExperience.responsibilities && selectedExperience.responsibilities.length > 0 ? (
                     <>
-                      <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-muted-foreground">Key Responsibilities</h4>
+                      <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Key Responsibilities</h4>
                       <div className="space-y-2.5 sm:space-y-3">
                         {selectedExperience.responsibilities.map((responsibility, idx) => (
                           <div
                             key={idx}
                             className="flex gap-3 sm:gap-4 group"
                           >
-                            <span className="text-emerald mt-1 sm:mt-1.5 flex-shrink-0 text-xs sm:text-sm">&#9657;</span>
-                            <p className="text-sm sm:text-base text-foreground/90 leading-relaxed">{highlightMetrics(responsibility)}</p>
+                            <span className="text-emerald mt-1 sm:mt-1.5 flex-shrink-0 text-sm">&#9657;</span>
+                            <p className="text-sm text-foreground/90 leading-relaxed">{highlightMetrics(responsibility)}</p>
                           </div>
                         ))}
                       </div>
                     </>
                   ) : (
-                    <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
+                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                       {selectedExperience.description}
                     </p>
                   )}
