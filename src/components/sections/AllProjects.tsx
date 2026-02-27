@@ -16,9 +16,7 @@ const AllProjects = () => {
             <FolderGit2 className="w-4 h-4" />
             <span>All Projects</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-mono text-foreground mb-4">
-            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald to-emerald/70">Work</span>
-          </h1>
+
           <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto">
             A comprehensive collection of my professional and personal projects, showcasing my expertise in modern web development, backend systems, and automation.
           </p>

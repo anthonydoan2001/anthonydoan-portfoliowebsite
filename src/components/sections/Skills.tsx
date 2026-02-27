@@ -1,32 +1,27 @@
-import { useInView } from "@/hooks/useInView";
 import { skills } from "@/lib/data";
 import { Code2, Database, Terminal, Wrench } from "lucide-react";
 
 const categoryConfig = {
   languages: { label: "Languages", icon: Code2 },
-  frameworks: { label: "Frameworks", icon: Terminal },
-  tools: { label: "Tools", icon: Wrench },
+  frameworks: { label: "Frameworks & Libraries", icon: Terminal },
+  tools: { label: "Developer Tools", icon: Wrench },
   infrastructure: { label: "Infrastructure", icon: Database },
 };
 
 const Skills = () => {
-  const { ref, isInView } = useInView({ threshold: 0.1 });
-
   return (
-    <section
-      className="pt-8 sm:pt-10 md:pt-12 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-background via-background to-secondary/5"
-      ref={ref as React.RefObject<HTMLElement>}
-    >
-      <div className={`max-w-4xl mx-auto ${isInView ? "revealed" : ""}`}>
-        <div className="text-center mb-5 sm:mb-6 reveal-up">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald/5 border border-emerald/20 text-emerald text-xs font-medium uppercase tracking-wider">
-            <Wrench className="w-3 h-3" />
+    <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-transparent">
+      <div className="max-w-4xl mx-auto">
+
+        <div className="text-center mb-10 sm:mb-14 flex flex-col items-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald/5 border border-emerald/20 text-emerald text-sm font-medium uppercase tracking-wider">
+            <Wrench className="w-4 h-4" />
             <span>Skills</span>
           </div>
         </div>
 
-        {/* Skills List */}
-        <div className="space-y-2 reveal-up stagger-1">
+        {/* Sleek List Layout */}
+        <div className="flex flex-col gap-4 sm:gap-6">
           {(Object.keys(categoryConfig) as Array<keyof typeof categoryConfig>).map((key) => {
             const { label, icon: Icon } = categoryConfig[key];
             const items = skills[key];
@@ -34,17 +29,21 @@ const Skills = () => {
             return (
               <div
                 key={key}
-                className="flex items-start gap-3 sm:gap-4 py-3 px-4 rounded-lg border border-border/30 bg-card/30"
+                className="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 p-4 sm:p-5 rounded-xl border border-border/20 bg-card/20 hover:bg-card/40 hover:border-emerald/20 transition-all duration-300 relative overflow-hidden"
               >
-                <div className="flex items-center gap-2 sm:gap-3 w-28 sm:w-36 flex-shrink-0">
-                  <Icon className="w-4 h-4 text-emerald flex-shrink-0" />
-                  <span className="text-sm font-semibold text-foreground">{label}</span>
+                {/* Subtle side accent on hover */}
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-emerald/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                <div className="flex items-center gap-3 sm:w-56 flex-shrink-0">
+                  <Icon className="w-4 h-4 text-muted-foreground group-hover:text-emerald transition-colors duration-300" />
+                  <h3 className="text-sm sm:text-base font-semibold text-foreground/90 font-mono tracking-tight">{label}</h3>
                 </div>
-                <div className="flex-1 flex flex-wrap gap-1.5">
+
+                <div className="flex flex-wrap gap-2 flex-1">
                   {items.map((item) => (
                     <span
                       key={item}
-                      className="px-2 py-0.5 rounded-md border border-border/50 bg-secondary/30 text-xs font-medium text-foreground/70"
+                      className="px-2.5 py-1 rounded-md bg-secondary/30 border border-border/40 text-xs sm:text-sm font-medium text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300 hover:!bg-emerald/10 hover:!text-emerald hover:!border-emerald/30 cursor-default"
                     >
                       {item}
                     </span>
@@ -54,6 +53,7 @@ const Skills = () => {
             );
           })}
         </div>
+
       </div>
     </section>
   );
