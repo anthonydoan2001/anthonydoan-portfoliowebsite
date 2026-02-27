@@ -1,8 +1,8 @@
+import { EmailIcon, GitHubIcon, LinkedInIcon } from "@/components/icons/SocialIcons";
 import { PERSONAL_INFO } from "@/lib/constants";
 import { smoothScrollToElement } from "@/lib/scrollUtils";
 import { ChevronDown, Download, MapPin } from "lucide-react";
 import { memo, useCallback, useEffect, useState } from "react";
-import { EmailIcon, GitHubIcon, LinkedInIcon } from "@/components/icons/SocialIcons";
 
 const Hero = () => {
   const [mounted, setMounted] = useState(false);
@@ -83,7 +83,7 @@ const Hero = () => {
                     src="/images/profilepic.jpg"
                     alt="Anthony Doan - IT Professional"
                     loading="eager"
-                    fetchpriority="high"
+                    fetchPriority="high"
                     decoding="async"
                     width={416}
                     height={416}
@@ -115,7 +115,7 @@ const Hero = () => {
       {/* Scroll down indicator */}
       <button
         onClick={handleScrollDown}
-        className={`absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground/50 animate-bounce transition-opacity duration-1000 delay-[2000ms] ${mounted ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground/50 animate-bounce transition-opacity duration-1000 [animation-delay:2000ms] ${mounted ? 'opacity-100' : 'opacity-0'}`}
         aria-label="Scroll to content"
       >
         <ChevronDown className="w-6 h-6" />

@@ -1,13 +1,16 @@
 import { GitHubIcon } from "@/components/icons/SocialIcons";
-import { PERSONAL_INFO } from "@/lib/constants";
+import { useInView } from "@/hooks/useInView";
 import { projects } from "@/lib/data";
 import { Project } from "@/types";
 import { ArrowRight, Code2, ExternalLink } from "lucide-react";
 import { memo } from "react";
-import { useInView } from "@/hooks/useInView";
+import { Link } from "react-router-dom";
 
 const Projects = () => {
   const { ref, isInView } = useInView({ threshold: 0.1 });
+
+  // Featured projects on the home page (limit to 3)
+  const featuredProjects = projects.slice(0, 3);
 
   return (
     <section
@@ -15,16 +18,19 @@ const Projects = () => {
       ref={ref as React.RefObject<HTMLElement>}
     >
       <div className={`max-w-7xl mx-auto ${isInView ? 'revealed' : ''}`}>
-        <div className="text-center mb-5 sm:mb-6 reveal-up">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald/5 border border-emerald/20 text-emerald text-xs font-medium uppercase tracking-wider">
+        <div className="text-center mb-8 sm:mb-12 reveal-up flex flex-col items-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald/5 border border-emerald/20 text-emerald text-xs font-medium uppercase tracking-wider mb-4">
             <Code2 className="w-3 h-3" />
-            <span>Projects</span>
+            <span>Featured Projects</span>
           </div>
+          <h2 className="text-2xl sm:text-3xl font-bold font-mono text-foreground">
+            Selected <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald to-emerald/70">Works</span>
+          </h2>
         </div>
 
         {/* Projects List */}
-        <div className="space-y-3 sm:space-y-4 mb-8 sm:mb-10">
-          {projects.map((project, index) => (
+        <div className="space-y-4 sm:space-y-6 mb-10 sm:mb-14">
+          {featuredProjects.map((project, index) => (
             <div key={index} className={`reveal-up stagger-${index + 1}`}>
               <ProjectRow project={project} />
             </div>
@@ -33,102 +39,106 @@ const Projects = () => {
 
         {/* View All Projects Link */}
         <div className="text-center reveal-up stagger-5">
-          <a
-            href={PERSONAL_INFO.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full border border-emerald/30 bg-emerald/5 hover:bg-emerald/10 hover:border-emerald/50 active:bg-emerald/15 text-emerald transition-all duration-300 group touch-manipulation text-sm"
+          <Link
+            to="/projects"
+            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full border border-emerald/30 bg-emerald/5 hover:bg-emerald/10 hover:border-emerald/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] active:bg-emerald/15 text-emerald transition-all duration-300 group touch-manipulation text-sm font-semibold tracking-wide"
           >
-            <GitHubIcon className="w-4 h-4" />
-            <span className="font-medium">View All on GitHub</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
+            <span>View All Projects</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
+          </Link>
         </div>
       </div>
     </section>
   );
 };
 
-const ProjectThumbnail = memo(({ image, title }: { image?: string; title: string }) => {
-  const hasImage = image && image.length > 0;
+const ProjectRow = memo(({ project }: { project: Project }) => {
+  const hasImage = project.image && project.image.length > 0;
 
   return (
-    <div className="flex-shrink-0 w-28 sm:w-36 aspect-video rounded-lg overflow-hidden border border-border/50 bg-secondary/20">
-      {hasImage ? (
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover"
-          loading="lazy"
-        />
-      ) : (
-        <div className="w-full h-full flex flex-col items-center justify-center gap-1.5 bg-gradient-to-br from-secondary/40 via-secondary/20 to-emerald/5">
-          <Code2 className="w-5 h-5 sm:w-6 sm:h-6 text-emerald/20" />
-          <span className="text-[9px] sm:text-[10px] font-medium text-muted-foreground/30 uppercase tracking-wider">Preview</span>
-        </div>
-      )}
-    </div>
-  );
-});
+    <div className="group rounded-2xl border border-border/40 bg-card/40 hover:bg-card/60 hover:border-emerald/30 transition-all duration-300 p-4 sm:p-6 shadow-sm hover:shadow-xl hover:shadow-emerald/5 relative overflow-hidden flex flex-col sm:flex-row gap-5 sm:gap-6 lg:gap-8 items-start sm:items-center">
+      {/* Background glowing accent */}
+      <div className="absolute inset-0 bg-gradient-to-r from-emerald/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-const ProjectRow = memo(({ project }: { project: Project }) => (
-  <div className="rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-emerald/20 transition-all duration-300 p-4 sm:p-5">
-    <div className="flex items-start gap-3 sm:gap-4">
       {/* Thumbnail */}
-      <ProjectThumbnail image={project.image} title={project.title} />
+      <div className="flex-shrink-0 w-full sm:w-40 lg:w-48 aspect-video rounded-xl overflow-hidden border border-border/50 bg-secondary/20 relative z-10 group-hover:border-emerald/20 transition-colors duration-500">
+        <div className="absolute inset-0 bg-secondary/20 mix-blend-overlay group-hover:bg-transparent transition-colors duration-500 z-10" />
+        {hasImage ? (
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-secondary/40 via-secondary/20 to-emerald-900/5 relative overflow-hidden">
+             <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full translate-x-1/2 -translate-y-1/2" />
+            <Code2 className="w-6 h-6 sm:w-8 sm:h-8 text-emerald/20 group-hover:text-emerald/40 transition-colors duration-500 z-20" />
+            <span className="text-[10px] sm:text-xs font-semibold text-emerald/30 uppercase tracking-widest z-20">Preview</span>
+          </div>
+        )}
+      </div>
 
-      {/* Content + Links */}
-      <div className="flex-1 min-w-0 flex items-start justify-between gap-3 sm:gap-4">
-        {/* Title + Description */}
-        <div className="flex-1 min-w-0">
-          <h3 className="text-sm sm:text-base font-bold text-foreground font-mono leading-tight">
-            {project.title}
-          </h3>
-          <p className="text-sm text-muted-foreground leading-relaxed mt-1.5 line-clamp-2">
-            {project.description}
-          </p>
+      {/* Content */}
+      <div className="flex-1 min-w-0 relative z-10 w-full flex flex-col justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4 mb-3 sm:mb-2 text-left">
+          <div className="flex-1 min-w-0">
+            <h3 className="text-base sm:text-lg font-bold text-foreground font-mono leading-tight group-hover:text-emerald transition-colors duration-300">
+              {project.title}
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mt-2 line-clamp-2">
+              {project.description}
+            </p>
+          </div>
+
+          {/* Quick Links */}
+          <div className="flex items-center gap-2 flex-shrink-0 mt-2 sm:mt-0">
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg border border-border/50 bg-secondary/30 hover:bg-emerald/10 hover:border-emerald/30 active:bg-emerald/15 text-muted-foreground hover:text-emerald transition-all duration-300"
+                aria-label="View on GitHub"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <GitHubIcon className="w-4 h-4" />
+              </a>
+            )}
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg border border-border/50 bg-secondary/30 hover:bg-emerald/10 hover:border-emerald/30 active:bg-emerald/15 text-muted-foreground hover:text-emerald transition-all duration-300"
+                aria-label="View live site"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            )}
+          </div>
         </div>
 
-        {/* Links */}
-        <div className="flex items-center gap-2 flex-shrink-0">
-          {project.githubUrl && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="min-w-[36px] min-h-[36px] flex items-center justify-center p-2 rounded-lg border border-border/50 bg-secondary/30 hover:bg-emerald/10 hover:border-emerald/30 active:bg-emerald/15 text-muted-foreground hover:text-emerald transition-all duration-300 group/link touch-manipulation"
-              aria-label="View on GitHub"
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-border/30">
+          {project.tags.slice(0, 4).map((tag) => (
+            <span
+              key={tag}
+              className="px-2.5 py-1 rounded-md border border-border/50 bg-background/50 text-[11px] sm:text-xs font-medium text-foreground/70 group-hover:border-emerald/20 transition-colors duration-300"
             >
-              <GitHubIcon className="w-4 h-4 group-hover/link:scale-110 transition-transform flex-shrink-0" />
-            </a>
-          )}
-          {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="min-w-[36px] min-h-[36px] flex items-center justify-center p-2 rounded-lg border border-border/50 bg-secondary/30 hover:bg-emerald/10 hover:border-emerald/30 active:bg-emerald/15 text-muted-foreground hover:text-emerald transition-all duration-300 group/link touch-manipulation"
-              aria-label="View live site"
-            >
-              <ExternalLink className="w-4 h-4 group-hover/link:scale-110 transition-transform flex-shrink-0" />
-            </a>
+              {tag}
+            </span>
+          ))}
+          {project.tags.length > 4 && (
+            <span className="px-2.5 py-1 rounded-md border border-border/30 bg-transparent text-[11px] sm:text-xs font-medium text-muted-foreground">
+              +{project.tags.length - 4} more
+            </span>
           )}
         </div>
       </div>
     </div>
-
-    {/* Tags */}
-    <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-border/30">
-      {project.tags.map((tag) => (
-        <span
-          key={tag}
-          className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md border border-border/50 bg-secondary/30 text-[11px] sm:text-xs font-medium text-foreground/70"
-        >
-          {tag}
-        </span>
-      ))}
-    </div>
-  </div>
-));
+  );
+});
 
 export default Projects;

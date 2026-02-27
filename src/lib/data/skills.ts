@@ -1,4 +1,4 @@
-import skillsJson from "../../../public/data/skills.json";
+import skillsJson from "./skills.json";
 
 export interface Skills {
   languages: string[];

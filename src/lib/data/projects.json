@@ -27,7 +27,7 @@
     "title": "Personal Dashboard (bigboo.dev)",
     "description": "Full-stack Next.js 14 dashboard aggregating 8+ external APIs (sports, stocks, crypto, weather, entertainment) with intelligent cron-based refresh system featuring market-hours awareness and rate limit management.",
     "tags": ["Next.js 14", "TypeScript", "Prisma ORM", "PostgreSQL", "React Query"],
-    "image": "",
+    "image": "/images/projects/bigboodev.png",
     "githubUrl": "https://github.com/anthonydoan2001/bigboodev",
     "bullets": [
       "Normalized database schema with Prisma ORM handling diverse API structures",
@@ -40,7 +40,7 @@
     "title": "Portfolio Website",
     "description": "Modern responsive portfolio built with Vite and React featuring shadcn/ui component library, Lenis smooth scrolling, and dark/light theme system.",
     "tags": ["React", "TypeScript", "Tailwind CSS", "Vite", "shadcn/ui"],
-    "image": "",
+    "image": "/images/projects/portfolio-website.png",
     "githubUrl": "https://github.com/anthonydoan2001/anthonydoan-portfoliowebsite",
     "liveUrl": "https://anthonydoan.dev",
     "bullets": [
