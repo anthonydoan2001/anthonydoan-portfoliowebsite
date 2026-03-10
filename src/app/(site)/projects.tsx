@@ -3,9 +3,9 @@ import Skills from "@/components/sections/Skills";
 
 export default function ProjectsPage() {
   return (
-    <div className="pt-16 md:pt-20">
+    <div className="pt-16 md:pt-20 px-6 md:px-12 lg:px-20 pb-20 max-w-[1600px] mx-auto">
       <Skills />
-      <hr className="border-border/30 mx-4 sm:mx-6 lg:mx-8 mb-8" />
+      <div className="mt-20" />
       <AllProjects />
     </div>
   );

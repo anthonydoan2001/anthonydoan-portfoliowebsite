@@ -6,6 +6,7 @@ export { projects } from "./projects";
 export { skills } from "./skills";
 export { techStack } from "./techStack";
 export {
+  personalTags,
   currentlyPlaying,
   favoriteGames,
   currentlyReading,
@@ -13,5 +14,6 @@ export {
   pcSpecs,
   proxmoxServerSpecs,
   musicGenres,
-  favoriteAnime
+  favoriteAnime,
+  hardware
 } from "./personal";

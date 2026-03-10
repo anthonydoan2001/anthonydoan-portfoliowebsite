@@ -1,10 +1,10 @@
 import skillsJson from "./skills.json";
 
 export interface Skills {
-  languages: string[];
-  frameworks: string[];
-  tools: string[];
-  infrastructure: string[];
+  frontend: string[];
+  backend: string[];
+  cloud: string[];
+  sysadmin: string[];
 }
 
 export const skills: Skills = skillsJson;

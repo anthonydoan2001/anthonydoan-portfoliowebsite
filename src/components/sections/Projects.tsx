@@ -6,10 +6,15 @@ import { ArrowRight, Code2, ExternalLink } from "lucide-react";
 import { memo } from "react";
 import { Link } from "react-router-dom";
 
+const RepoIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+  </svg>
+);
+
 const Projects = () => {
   const { ref, isInView } = useInView({ threshold: 0.1 });
 
-  // Featured projects on the home page (limit to 3)
   const featuredProjects = projects.slice(0, 3);
 
   return (
@@ -28,16 +33,14 @@ const Projects = () => {
           </h2>
         </div>
 
-        {/* Projects List */}
-        <div className="space-y-4 sm:space-y-6 mb-10 sm:mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 sm:mb-14">
           {featuredProjects.map((project, index) => (
             <div key={index} className={`reveal-up stagger-${index + 1}`}>
-              <ProjectRow project={project} />
+              <ProjectCard project={project} />
             </div>
           ))}
         </div>
 
-        {/* View All Projects Link */}
         <div className="text-center reveal-up stagger-5">
           <Link
             to="/projects"
@@ -52,93 +55,81 @@ const Projects = () => {
   );
 };
 
-const ProjectRow = memo(({ project }: { project: Project }) => {
-  const hasImage = project.image && project.image.length > 0;
+const ProjectCard = memo(({ project }: { project: Project }) => {
+  const projectSlug = project.title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
 
   return (
-    <div className="group rounded-2xl border border-border/40 bg-card/40 hover:bg-card/60 hover:border-emerald/30 transition-all duration-300 p-4 sm:p-6 shadow-sm hover:shadow-xl hover:shadow-emerald/5 relative overflow-hidden flex flex-col sm:flex-row gap-5 sm:gap-6 lg:gap-8 items-start sm:items-center">
-      {/* Background glowing accent */}
-      <div className="absolute inset-0 bg-gradient-to-r from-emerald/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+    <div className="h-full p-6 bg-card border border-border rounded-lg hover:border-emerald transition-colors flex flex-col justify-between">
+      <div>
+        <div className="flex items-center mb-3">
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-emerald font-bold hover:underline"
+          >
+            <RepoIcon className="w-4 h-4" />
+            <span>{projectSlug}</span>
+          </a>
+        </div>
 
-      {/* Thumbnail */}
-      <div className="flex-shrink-0 w-full sm:w-40 lg:w-48 aspect-video rounded-xl overflow-hidden border border-border/50 bg-secondary/20 relative z-10 group-hover:border-emerald/20 transition-colors duration-500">
-        <div className="absolute inset-0 bg-secondary/20 mix-blend-overlay group-hover:bg-transparent transition-colors duration-500 z-10" />
-        {hasImage ? (
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-            loading="lazy"
-          />
-        ) : (
-          <div className="w-full h-full flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-secondary/40 via-secondary/20 to-emerald-900/5 relative overflow-hidden">
-             <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full translate-x-1/2 -translate-y-1/2" />
-            <Code2 className="w-6 h-6 sm:w-8 sm:h-8 text-emerald/20 group-hover:text-emerald/40 transition-colors duration-500 z-20" />
-            <span className="text-[10px] sm:text-xs font-semibold text-emerald/30 uppercase tracking-widest z-20">Preview</span>
+        <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+          {project.description}
+        </p>
+
+        {project.tags && project.tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-6">
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className="px-2 py-1 text-[10px] font-mono uppercase tracking-wider bg-secondary text-secondary-foreground rounded border border-border"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
         )}
       </div>
 
-      {/* Content */}
-      <div className="flex-1 min-w-0 relative z-10 w-full flex flex-col justify-between">
-        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4 mb-3 sm:mb-2 text-left">
-          <div className="flex-1 min-w-0">
-            <h3 className="text-base sm:text-lg font-bold text-foreground font-mono leading-tight group-hover:text-emerald transition-colors duration-300">
-              {project.title}
-            </h3>
-            <p className="text-sm text-muted-foreground leading-relaxed mt-2 line-clamp-2">
-              {project.description}
-            </p>
-          </div>
-
-          {/* Quick Links */}
-          <div className="flex items-center gap-2 flex-shrink-0 mt-2 sm:mt-0">
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg border border-border/50 bg-secondary/30 hover:bg-emerald/10 hover:border-emerald/30 active:bg-emerald/15 text-muted-foreground hover:text-emerald transition-all duration-300"
-                aria-label="View on GitHub"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <GitHubIcon className="w-4 h-4" />
-              </a>
-            )}
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg border border-border/50 bg-secondary/30 hover:bg-emerald/10 hover:border-emerald/30 active:bg-emerald/15 text-muted-foreground hover:text-emerald transition-all duration-300"
-                aria-label="View live site"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <ExternalLink className="w-4 h-4" />
-              </a>
-            )}
-          </div>
-        </div>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-border/30">
-          {project.tags.slice(0, 4).map((tag) => (
-            <span
-              key={tag}
-              className="px-2.5 py-1 rounded-md border border-border/50 bg-background/50 text-[11px] sm:text-xs font-medium text-foreground/70 group-hover:border-emerald/20 transition-colors duration-300"
+      <div className="flex items-center justify-between text-xs font-mono text-muted-foreground">
+        {project.language && (
+          <span className="flex items-center gap-1.5">
+            <span className="w-3 h-3 rounded-full bg-emerald" />
+            {project.language}
+          </span>
+        )}
+        <div className="flex items-center gap-3">
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-emerald transition-colors"
+              aria-label="View on GitHub"
             >
-              {tag}
-            </span>
-          ))}
-          {project.tags.length > 4 && (
-            <span className="px-2.5 py-1 rounded-md border border-border/30 bg-transparent text-[11px] sm:text-xs font-medium text-muted-foreground">
-              +{project.tags.length - 4} more
-            </span>
+              <GitHubIcon className="w-4 h-4" />
+            </a>
+          )}
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-emerald transition-colors"
+              aria-label="View live site"
+            >
+              <ExternalLink className="w-4 h-4" />
+            </a>
           )}
         </div>
       </div>
     </div>
   );
 });
+
+ProjectCard.displayName = 'ProjectCard';
 
 export default Projects;

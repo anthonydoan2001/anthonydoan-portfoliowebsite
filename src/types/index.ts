@@ -6,6 +6,8 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   bullets?: string[];
+  language?: string;
+  badge?: string;
 }
 
 export interface Experience {
