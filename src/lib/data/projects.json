@@ -2,8 +2,13 @@
   {
     "title": "Razor ERP Auto-Fill Chrome Extension",
     "description": "Chrome extension built with Manifest V3 that automates asset audit workflows, reducing form completion time by 70% through intelligent field detection and custom template system.",
-    "tags": ["JavaScript", "Chrome Extension API", "Manifest V3", "DOM Manipulation"],
-    "githubUrl": "https://github.com/anthonydoan2001/Razor-ERP-Auto-Fill-Chrome-Extension",
+    "tags": [
+      "JavaScript",
+      "Chrome Extension API",
+      "Manifest V3",
+      "DOM Manipulation"
+    ],
+    "githubUrl": "https://github.com/anthonydoandev/Razor-ERP-Auto-Fill-Chrome-Extension",
     "language": "JavaScript",
     "badge": "Chrome Extension",
     "bullets": [
@@ -15,8 +20,13 @@
   {
     "title": "Azure User Provisioning Automation",
     "description": "Enterprise identity management solution using PowerShell 7 and Microsoft Graph API to automate hybrid Active Directory and Azure AD provisioning workflows for Windows Server 2022 environments.",
-    "tags": ["PowerShell 7", "Microsoft Graph API", "Active Directory", "Azure AD"],
-    "githubUrl": "https://github.com/anthonydoan2001/azure-user-provisioning-automation",
+    "tags": [
+      "PowerShell 7",
+      "Microsoft Graph API",
+      "Active Directory",
+      "Azure AD"
+    ],
+    "githubUrl": "https://github.com/anthonydoandev/azure-user-provisioning-automation",
     "language": "PowerShell",
     "bullets": [
       "PowerShell framework integrating on-premises AD with Azure AD",
@@ -27,8 +37,14 @@
   {
     "title": "Personal Dashboard (bigboo.dev)",
     "description": "Full-stack Next.js 14 dashboard aggregating 8+ external APIs (sports, stocks, crypto, weather, entertainment) with intelligent cron-based refresh system featuring market-hours awareness and rate limit management.",
-    "tags": ["Next.js 14", "TypeScript", "Prisma ORM", "PostgreSQL", "React Query"],
-    "githubUrl": "https://github.com/anthonydoan2001/bigboodev",
+    "tags": [
+      "Next.js 14",
+      "TypeScript",
+      "Prisma ORM",
+      "PostgreSQL",
+      "React Query"
+    ],
+    "githubUrl": "https://github.com/anthonydoandev/bigboodev",
     "language": "TypeScript",
     "bullets": [
       "Normalized database schema with Prisma ORM handling diverse API structures",
@@ -41,7 +57,7 @@
     "title": "Portfolio Website",
     "description": "Modern responsive portfolio built with Vite and React featuring shadcn/ui component library, Lenis smooth scrolling, and dark/light theme system.",
     "tags": ["React", "TypeScript", "Tailwind CSS", "Vite", "shadcn/ui"],
-    "githubUrl": "https://github.com/anthonydoan2001/anthonydoan-portfoliowebsite",
+    "githubUrl": "https://github.com/anthonydoandev/anthonydoan-portfoliowebsite",
     "liveUrl": "https://anthonydoan.dev",
     "language": "TypeScript",
     "bullets": [
