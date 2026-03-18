@@ -1,7 +1,8 @@
 import { EmailIcon, GitHubIcon, LinkedInIcon, MapPinIcon, PhoneIcon } from "@/components/icons/SocialIcons";
 import { PERSONAL_INFO } from "@/lib/constants";
-import { ArrowUpRight, Download } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Download } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   const { ref, isInView } = useInView({ threshold: 0.1 });
@@ -106,21 +107,21 @@ const Contact = () => {
         {/* CTA Section */}
         <div className="text-center pt-6 sm:pt-8 space-y-4 reveal-up stagger-6">
           <p className="text-sm sm:text-base font-semibold text-foreground">Ready to connect?</p>
-          <a
-            href={`mailto:${PERSONAL_INFO.email}`}
-            className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 sm:py-4 bg-emerald text-background font-semibold rounded-full hover:bg-emerald/90 active:scale-95 transition-all duration-300 shadow-lg shadow-emerald/20 text-sm touch-manipulation"
-          >
-            <span>Send me an email</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </a>
-          <div>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 sm:py-4 bg-emerald text-background font-semibold rounded-full hover:bg-emerald/90 active:scale-95 transition-all duration-300 shadow-lg shadow-emerald/20 text-sm touch-manipulation"
+            >
+              <span>Send me a message</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
             <a
               href={PERSONAL_INFO.cvPath}
               download
               className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-emerald transition-colors underline underline-offset-4"
             >
               <Download className="w-3.5 h-3.5" />
-              Or download my resume
+              Download resume
             </a>
           </div>
         </div>

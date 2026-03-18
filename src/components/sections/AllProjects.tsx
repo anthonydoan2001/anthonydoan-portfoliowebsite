@@ -1,5 +1,6 @@
 import { GitHubIcon } from '@/components/icons/SocialIcons';
 import { projects } from '@/lib/data';
+import { getLanguageColor } from '@/lib/languageColors';
 import { Project } from '@/types';
 import { ExternalLink, FolderGit2 } from 'lucide-react';
 import { memo } from 'react';
@@ -92,7 +93,7 @@ const ProjectCard = memo(({ project }: { project: Project }) => {
       <div className="flex items-center justify-between text-xs font-mono text-muted-foreground">
         {project.language && (
           <span className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-full bg-emerald" />
+            <span className="w-3 h-3 rounded-full" style={{ backgroundColor: getLanguageColor(project.language) }} />
             {project.language}
           </span>
         )}
