@@ -1,6 +1,5 @@
 'use client';
 
-import { motion, AnimatePresence } from 'motion/react';
 import {
   personalTags,
   homelabSetup,
@@ -14,14 +13,7 @@ import {
 
 const Personal = () => {
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key="personal"
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.95, opacity: 0 }}
-        className="relative border-[6px] border-primary/30 bg-background p-4 md:p-8"
-      >
+    <div className="relative border-[6px] border-primary/30 bg-background p-4 md:p-8">
         {/* Corner accents */}
         <div className="absolute -top-2 -left-2 w-10 h-10 border-t-4 border-l-4 border-primary" />
         <div className="absolute -top-2 -right-2 w-10 h-10 border-t-4 border-r-4 border-primary" />
@@ -129,8 +121,7 @@ const Personal = () => {
             </div>
           </div>
         </div>
-      </motion.div>
-    </AnimatePresence>
+    </div>
   );
 };
 
